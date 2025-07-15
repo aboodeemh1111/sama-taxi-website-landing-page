@@ -9,14 +9,28 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <div className="scroll-smooth">
       <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <FemaleDrivers />
-      <JoinDriverTeam />
-      <FinalCTA />
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="about">
+          <Features />
+        </section>
+        <section id="how-it-works">
+          <HowItWorks />
+        </section>
+        <section id="female-drivers">
+          <FemaleDrivers />
+        </section>
+        <section id="join-driver">
+          <JoinDriverTeam />
+        </section>
+        <section id="download">
+          <FinalCTA />
+        </section>
+      </main>
       <Footer />
     </div>
   );

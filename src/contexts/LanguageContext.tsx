@@ -34,23 +34,40 @@ interface LanguageProviderProps {
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
   const [language, setLanguage] = useState<Language>("ar");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Load language from localStorage on mount
-    const savedLanguage = localStorage.getItem("language") as Language;
-    if (savedLanguage && (savedLanguage === "ar" || savedLanguage === "en")) {
-      setLanguage(savedLanguage);
+    // Only run on client side
+    if (typeof window !== "undefined") {
+      const savedLanguage = localStorage.getItem("language") as Language;
+      if (savedLanguage && (savedLanguage === "ar" || savedLanguage === "en")) {
+        setLanguage(savedLanguage);
+      }
+      setIsInitialized(true);
     }
   }, []);
 
   useEffect(() => {
     // Save language to localStorage and update document
-    localStorage.setItem("language", language);
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-  }, [language]);
+    if (typeof window !== "undefined" && isInitialized) {
+      localStorage.setItem("language", language);
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    }
+  }, [language, isInitialized]);
 
   const isRTL = language === "ar";
+
+  // Prevent hydration mismatch
+  if (!isInitialized) {
+    return (
+      <LanguageContext.Provider
+        value={{ language: "ar", setLanguage: () => {}, isRTL: true }}
+      >
+        {children}
+      </LanguageContext.Provider>
+    );
+  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, isRTL }}>

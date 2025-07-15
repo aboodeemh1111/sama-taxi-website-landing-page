@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Providers } from "@/contexts/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sama Taxi",
-  description: "Your reliable ride, just a tap away.",
+  title: "سما تاكسي - تطبيق التاكسي الموثوق في السعودية",
+  description:
+    "رحلتك الموثوقة، بلمسة واحدة فقط. احجز رحلات سريعة وآمنة ومريحة في جميع أنحاء المملكة العربية السعودية.",
 };
 
 export default function RootLayout({
@@ -16,9 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html
+      lang="ar"
+      dir="rtl"
+      className="scroll-smooth"
+      suppressHydrationWarning
+    >
       <body className={inter.className} suppressHydrationWarning={true}>
-        <LanguageProvider>{children}</LanguageProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

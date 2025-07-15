@@ -1,189 +1,268 @@
 "use client";
 
-import { useState } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { useTranslation } from "@/hooks/useTranslation";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { language, setLanguage, isRTL } = useLanguage();
-  const { t } = useTranslation();
+  const [activeSection, setActiveSection] = useState("home");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleLanguage = () => {
-    setLanguage(language === "ar" ? "en" : "ar");
+  // Smooth scroll function
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Account for fixed navbar height
+      const elementPosition = element.offsetTop - offset;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+    setIsMenuOpen(false); // Close mobile menu after clicking
   };
 
+  // Track active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        "home",
+        "about",
+        "how-it-works",
+        "female-drivers",
+        "join-driver",
+        "download",
+      ];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center min-w-0">
             <img
               src="/logo.png"
-              alt={t.navbar.logoAlt}
+              alt="شعار سما تاكسي"
               className="h-8 sm:h-10 w-auto flex-shrink-0"
             />
-            <span
-              className={`${
-                isRTL ? "mr-2" : "ml-2"
-              } text-lg sm:text-xl font-bold text-gray-900 truncate`}
-            >
+            <span className="mr-2 text-lg sm:text-xl font-bold text-gray-900 truncate">
               سما<span className="text-yellow-500">تاكسي</span>
             </span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
-            <div
-              className={`flex items-center space-x-6 xl:space-x-8 ${
-                isRTL ? "space-x-reverse" : ""
-              }`}
-            >
-              <a
-                href="/"
-                className="text-gray-900 hover:text-yellow-500 px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200"
+            <div className="flex items-center space-x-6 xl:space-x-8 space-x-reverse">
+              <button
+                onClick={() => scrollToSection("home")}
+                className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
+                  activeSection === "home"
+                    ? "active text-yellow-500"
+                    : "text-gray-900 hover:text-yellow-500"
+                }`}
               >
-                {t.navbar.home}
-              </a>
-              <a
-                href="#about"
-                className="text-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200"
+                الرئيسية
+              </button>
+              <button
+                onClick={() => scrollToSection("about")}
+                className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
+                  activeSection === "about"
+                    ? "active text-yellow-500"
+                    : "text-gray-700 hover:text-yellow-500"
+                }`}
               >
-                {t.navbar.about}
-              </a>
-              <a
-                href="#download"
-                className="text-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200"
+                عن التطبيق
+              </button>
+              <button
+                onClick={() => scrollToSection("how-it-works")}
+                className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
+                  activeSection === "how-it-works"
+                    ? "active text-yellow-500"
+                    : "text-gray-700 hover:text-yellow-500"
+                }`}
               >
-                {t.navbar.downloadApp}
-              </a>
-              <a
-                href="#join-driver"
-                className="text-gray-700 hover:text-yellow-500 px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200"
+                كيف يعمل
+              </button>
+              <button
+                onClick={() => scrollToSection("female-drivers")}
+                className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
+                  activeSection === "female-drivers"
+                    ? "active text-yellow-500"
+                    : "text-gray-700 hover:text-yellow-500"
+                }`}
               >
-                {t.navbar.joinDriver}
-              </a>
+                السائقات
+              </button>
+              <button
+                onClick={() => scrollToSection("join-driver")}
+                className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
+                  activeSection === "join-driver"
+                    ? "active text-yellow-500"
+                    : "text-gray-700 hover:text-yellow-500"
+                }`}
+              >
+                انضم كسائق
+              </button>
+              <button
+                onClick={() => scrollToSection("download")}
+                className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
+                  activeSection === "download"
+                    ? "active text-yellow-500"
+                    : "text-gray-700 hover:text-yellow-500"
+                }`}
+              >
+                حمل التطبيق
+              </button>
             </div>
           </div>
 
-          {/* Language Switcher & CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {/* Language Toggle */}
+          {/* CTA Button */}
+          <div className="hidden md:block">
             <button
-              onClick={toggleLanguage}
-              className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-yellow-500 transition-colors duration-200"
+              onClick={() => scrollToSection("download")}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
             >
-              <span className={`${isRTL ? "ml-1" : "mr-1"}`}>🌐</span>
-              {language === "ar" ? "English" : "العربية"}
+              حمل التطبيق
             </button>
-
-            {/* CTA Button */}
-            <a
-              href="#download"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 xl:px-6 py-2 rounded-full text-sm xl:text-base font-semibold transition-all duration-200 shadow-md hover:shadow-lg whitespace-nowrap"
-            >
-              {t.navbar.downloadApp}
-            </a>
           </div>
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-yellow-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500 transition-colors duration-200"
-              aria-expanded={isMenuOpen}
-              aria-label={t.navbar.toggleMenu}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-yellow-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500 transition-colors duration-200"
+              aria-expanded="false"
             >
-              <svg
-                className={`${isMenuOpen ? "hidden" : "block"} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              <svg
-                className={`${isMenuOpen ? "block" : "hidden"} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <span className="sr-only">فتح قائمة التنقل</span>
+              {!isMenuOpen ? (
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div className={`lg:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-        <div className="px-3 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
-          <a
-            href="/"
-            className="text-gray-900 hover:text-yellow-500 hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t.navbar.home}
-          </a>
-          <a
-            href="#about"
-            className="text-gray-700 hover:text-yellow-500 hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t.navbar.about}
-          </a>
-          <a
-            href="#download"
-            className="text-gray-700 hover:text-yellow-500 hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t.navbar.downloadApp}
-          </a>
-          <a
-            href="#join-driver"
-            className="text-gray-700 hover:text-yellow-500 hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {t.navbar.joinDriver}
-          </a>
-
-          {/* Mobile Language Toggle */}
+      <div
+        className={`lg:hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen
+            ? "max-h-96 opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
           <button
-            onClick={toggleLanguage}
-            className="w-full text-left text-gray-700 hover:text-yellow-500 hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200"
+            onClick={() => scrollToSection("home")}
+            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
+              activeSection === "home"
+                ? "text-yellow-500 bg-yellow-50"
+                : "text-gray-900 hover:text-yellow-500 hover:bg-gray-50"
+            }`}
           >
-            🌐 {language === "ar" ? "English" : "العربية"}
+            الرئيسية
           </button>
-
-          {/* Mobile CTA Button */}
-          <div className="pt-4 pb-2 border-t border-gray-200 mt-4">
-            <a
-              href="#download"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white block mx-3 px-6 py-3 rounded-full text-base font-semibold text-center transition-colors duration-200 shadow-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t.navbar.downloadApp}
-            </a>
-          </div>
+          <button
+            onClick={() => scrollToSection("about")}
+            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
+              activeSection === "about"
+                ? "text-yellow-500 bg-yellow-50"
+                : "text-gray-700 hover:text-yellow-500 hover:bg-gray-50"
+            }`}
+          >
+            عن التطبيق
+          </button>
+          <button
+            onClick={() => scrollToSection("how-it-works")}
+            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
+              activeSection === "how-it-works"
+                ? "text-yellow-500 bg-yellow-50"
+                : "text-gray-700 hover:text-yellow-500 hover:bg-gray-50"
+            }`}
+          >
+            كيف يعمل
+          </button>
+          <button
+            onClick={() => scrollToSection("female-drivers")}
+            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
+              activeSection === "female-drivers"
+                ? "text-yellow-500 bg-yellow-50"
+                : "text-gray-700 hover:text-yellow-500 hover:bg-gray-50"
+            }`}
+          >
+            السائقات
+          </button>
+          <button
+            onClick={() => scrollToSection("join-driver")}
+            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
+              activeSection === "join-driver"
+                ? "text-yellow-500 bg-yellow-50"
+                : "text-gray-700 hover:text-yellow-500 hover:bg-gray-50"
+            }`}
+          >
+            انضم كسائق
+          </button>
+          <button
+            onClick={() => scrollToSection("download")}
+            className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
+              activeSection === "download"
+                ? "text-yellow-500 bg-yellow-50"
+                : "text-gray-700 hover:text-yellow-500 hover:bg-gray-50"
+            }`}
+          >
+            حمل التطبيق
+          </button>
         </div>
       </div>
     </nav>
