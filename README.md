@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# سما تاكسي - موقع الهبوط
 
-## Getting Started
+موقع هبوط احترافي لتطبيق سما تاكسي - تطبيق التاكسي الموثوق في المملكة العربية السعودية.
 
-First, run the development server:
+## 🚀 المميزات
+
+- ✅ **تصميم متجاوب** - يعمل على جميع الأجهزة
+- ✅ **صفحة واحدة** - تنقل سلس بين الأقسام
+- ✅ **دعم اللغة العربية** - تصميم RTL مع دعم الإنجليزية
+- ✅ **تحسين محركات البحث** - SEO محسن للسوق السعودي
+- ✅ **أداء عالي** - تحميل سريع وتجربة مستخدم ممتازة
+- ✅ **رسوم متحركة سلسة** - تأثيرات بصرية احترافية
+
+## 🛠️ التقنيات المستخدمة
+
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS
+- **Vercel** - Deployment platform
+
+## 📦 التثبيت والتشغيل
 
 ```bash
+# تثبيت المكتبات
+npm install
+
+# تشغيل الخادم المحلي
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# بناء المشروع للإنتاج
+npm run build
+
+# تشغيل النسخة المبنية
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 النشر على Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### الطريقة الأولى: من خلال Vercel CLI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# تثبيت Vercel CLI
+npm i -g vercel
 
-## Learn More
+# تسجيل الدخول
+vercel login
 
-To learn more about Next.js, take a look at the following resources:
+# النشر
+vercel --prod
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### الطريقة الثانية: من خلال Git Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. ادفع الكود إلى GitHub/GitLab
+2. اربط المستودع بـ Vercel
+3. سيتم النشر تلقائياً عند كل push
 
-## Deploy on Vercel
+### الطريقة الثالثة: من خلال Vercel Dashboard
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. اذهب إلى [vercel.com](https://vercel.com)
+2. اضغط على "New Project"
+3. استورد مستودع GitHub الخاص بك
+4. اتبع التعليمات
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 إعدادات النشر
+
+### متغيرات البيئة
+```env
+NODE_ENV=production
+NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
+NEXT_PUBLIC_APP_NAME=Sama Taxi
+```
+
+### إعدادات Vercel
+- **Framework**: Next.js
+- **Build Command**: `npm run build`
+- **Output Directory**: `.next`
+- **Install Command**: `npm install`
+
+## �� هيكل المشروع
+
+```
+├── src/
+│   ├── app/                 # App Router pages
+│   ├── components/          # React components
+│   ├── contexts/           # React contexts
+│   ├── hooks/              # Custom hooks
+│   └── translations/       # Language files
+├── public/                 # Static assets
+├── tailwind.config.js      # Tailwind configuration
+├── next.config.ts          # Next.js configuration
+└── vercel.json            # Vercel configuration
+```
+
+## 🌟 الأقسام
+
+1. **الرئيسية** - Hero section with video background
+2. **عن التطبيق** - Features and benefits
+3. **كيف يعمل** - How it works section
+4. **السائقات** - Female drivers section
+5. **انضم كسائق** - Join driver team
+6. **حمل التطبيق** - Download app CTA
+
+## 📱 الاستجابة
+
+الموقع محسن للعمل على:
+- 📱 الهواتف الذكية
+- 📱 الأجهزة اللوحية
+- 💻 أجهزة الكمبيوتر
+- 🖥️ الشاشات الكبيرة
+
+## 🎨 التخصيص
+
+يمكنك تخصيص:
+- الألوان في `tailwind.config.js`
+- النصوص في `src/translations/`
+- الصور في `public/`
+- التصميم في `src/components/`
+
+## 🔍 تحسين محركات البحث
+
+الموقع محسن لـ:
+- الكلمات المفتاحية السعودية
+- البحث المحلي
+- سرعة التحميل
+- تجربة المستخدم
+
+## 📞 الدعم
+
+لأي استفسارات أو مساعدة في النشر، يرجى فتح issue في المستودع.
+
+---
+
+**تم تطوير الموقع بـ ❤️ للسوق السعودي**
+
+## 7. Create a .gitignore file optimized for Vercel:
+
+```gitignore:.gitignore
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Misc
+.DS_Store
+*.tsbuildinfo
+next-env.
+```

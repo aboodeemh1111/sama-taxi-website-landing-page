@@ -1,28 +1,36 @@
-{
-  "name": "sama-taxi-website-landing-page",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // Enable static exports for better performance
+  output: 'export',
+  
+  // Optimize images
+  images: {
+    unoptimized: true,
+    domains: ['localhost'],
   },
-  "dependencies": {
-    "next": "15.3.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+  
+  // Enable compression
+  compress: true,
+  
+  // Optimize for production
+  experimental: {
+    optimizeCss: true,
   },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.5",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5"
-  }
-}
+  
+  // Trailing slash for better SEO
+  trailingSlash: true,
+  
+  // Custom webpack config for optimization
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
+};
+
+export default nextConfig;

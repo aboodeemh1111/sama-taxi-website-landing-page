@@ -1,7 +1,36 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Enable static exports for better performance
+  output: "export",
+
+  // Optimize images
+  images: {
+    unoptimized: true,
+    domains: ["localhost"],
+  },
+
+  // Enable compression
+  compress: true,
+
+  // Optimize for production
+  experimental: {
+    optimizeCss: true,
+  },
+
+  // Trailing slash for better SEO
+  trailingSlash: true,
+
+  // Custom webpack config for optimization
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
