@@ -2,11 +2,9 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
-import ServiceAreas from "@/components/ServiceAreas";
-import Testimonials from "@/components/Testimonials";
-import JoinTeam from "@/components/JoinTeam";
+import FemaleDrivers from "@/components/FemaleDrivers";
+import JoinDriverTeam from "@/components/JoinDriverTeam";
 import FinalCTA from "@/components/FinalCTA";
-import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -16,11 +14,9 @@ export default function Home() {
       <Hero />
       <Features />
       <HowItWorks />
-      <ServiceAreas />
-      <Testimonials />
-      <JoinTeam />
+      <FemaleDrivers />
+      <JoinDriverTeam />
       <FinalCTA />
-      <FAQ />
       <Footer />
     </div>
   );
