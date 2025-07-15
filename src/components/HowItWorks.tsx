@@ -1,31 +1,18 @@
+// How It Works Component
+// Purpose: Guide users through the app's core functionality
+
 const HowItWorks = () => {
   return (
-    <section style={{ textAlign: "center", padding: "40px 20px" }}>
-      <h2>How It Works</h2>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          marginTop: "20px",
-        }}
-      >
-        <div
-          style={{ border: "1px solid #ccc", padding: "20px", width: "200px" }}
-        >
-          Step 1: Request
-        </div>
-        <div
-          style={{ border: "1px solid #ccc", padding: "20px", width: "200px" }}
-        >
-          Step 2: Ride
-        </div>
-        <div
-          style={{ border: "1px solid #ccc", padding: "20px", width: "200px" }}
-        >
-          Step 3: Pay
-        </div>
-      </div>
+    <section>
+      {/* 
+      Section Heading (h2): "Your Ride in 3 Simple Steps" (text-4xl)
+      
+      Step 1: "1. Download the Sama Taxi App" (text-2xl) + description (text-base)
+      Step 2: "2. Book Your Ride Instantly" (text-2xl) + description (text-base)
+      Step 3: "3. Enjoy Your Journey" (text-2xl) + description (text-base)
+      
+      App screenshots for each step
+      */}
     </section>
   );
 };

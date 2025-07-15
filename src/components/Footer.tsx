@@ -1,9 +1,25 @@
+// Footer Component
+// Purpose: Legal information, contact, social media, navigation
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-4 text-center">
-        <p>&copy; 2025 Sama Taxi. All rights reserved.</p>
-      </div>
+    <footer>
+      {/* 
+      Company Name: "Sama Taxi" (text-xl, bold)
+      Copyright: "© 2025 Sama Taxi. All rights reserved." (text-sm)
+      
+      Navigation Links (text-sm):
+      - Privacy Policy
+      - Terms of Service
+      - Contact Us
+      - Careers
+      
+      Social Media Links (icons only):
+      - Twitter/X
+      - Instagram
+      - Facebook
+      - LinkedIn
+      */}
     </footer>
   );
 };
