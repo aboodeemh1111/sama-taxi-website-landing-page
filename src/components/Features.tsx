@@ -9,18 +9,25 @@ const Features = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="about" className="bg-white py-16">
+    <section
+      id="about"
+      className="bg-gradient-to-b from-gray-50 to-white py-20"
+    >
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-          {t.features.title}
-        </h2>
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            {t.features.title}
+          </h2>
+          <div className="w-24 h-1 bg-yellow-500 mx-auto rounded-full"></div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Feature 1 - Extensive Coverage */}
-          <div className="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-8 h-8 text-white"
+                className="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -39,19 +46,19 @@ const Features = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 text-center group-hover:text-yellow-600 transition-colors duration-300">
               {t.features.feature1.title}
             </h3>
-            <p className="text-base text-gray-600">
+            <p className="text-gray-600 text-center leading-relaxed">
               {t.features.feature1.description}
             </p>
           </div>
 
           {/* Feature 2 - Safe & Comfortable */}
-          <div className="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-8 h-8 text-white"
+                className="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -64,19 +71,19 @@ const Features = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 text-center group-hover:text-yellow-600 transition-colors duration-300">
               {t.features.feature2.title}
             </h3>
-            <p className="text-base text-gray-600">
+            <p className="text-gray-600 text-center leading-relaxed">
               {t.features.feature2.description}
             </p>
           </div>
 
           {/* Feature 3 - Fair Pricing */}
-          <div className="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-8 h-8 text-white"
+                className="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,19 +96,19 @@ const Features = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 text-center group-hover:text-yellow-600 transition-colors duration-300">
               {t.features.feature3.title}
             </h3>
-            <p className="text-base text-gray-600">
+            <p className="text-gray-600 text-center leading-relaxed">
               {t.features.feature3.description}
             </p>
           </div>
 
           {/* Feature 4 - 24/7 Service */}
-          <div className="text-center p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-8 h-8 text-white"
+                className="w-10 h-10 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -114,10 +121,10 @@ const Features = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 text-center group-hover:text-yellow-600 transition-colors duration-300">
               {t.features.feature4.title}
             </h3>
-            <p className="text-base text-gray-600">
+            <p className="text-gray-600 text-center leading-relaxed">
               {t.features.feature4.description}
             </p>
           </div>
