@@ -1,63 +1,29 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  // Remove static export for Vercel deployment
-  // output: 'export', // Remove this line
-  
-  // Optimize images for Vercel
-  images: {
-    domains: ['localhost'],
-    formats: ['image/webp', 'image/avif'],
+{
+  "name": "sama-taxi-website-landing-page",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  
-  // Enable compression
-  compress: true,
-  
-  // Optimize for production
-  experimental: {
-    optimizeCss: true,
+  "dependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.1.3",
+    "next": "15.1.3",
+    "postcss": "^8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5"
   },
-  
-  // Better performance
-  poweredByHeader: false,
-  
-  // Custom headers for security
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
-    ];
-  },
-  
-  // Redirects
-  async redirects() {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
-};
-
-export default nextConfig;
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18"
+  }
+}

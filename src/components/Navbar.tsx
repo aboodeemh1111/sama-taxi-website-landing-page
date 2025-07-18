@@ -63,13 +63,10 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center min-w-0">
             <img
-              src="/logo.png"
+              src="/images~/Sama Taxi-04.svg"
               alt="شعار سما تاكسي"
-              className="h-8 sm:h-10 w-auto flex-shrink-0"
+              className="h-10 sm:h-12 w-auto flex-shrink-0"
             />
-            <span className="mr-2 text-lg sm:text-xl font-bold text-gray-900 truncate">
-              سما<span className="text-yellow-500">تاكسي</span>
-            </span>
           </div>
 
           {/* Desktop Navigation */}

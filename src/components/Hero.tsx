@@ -7,27 +7,62 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
   const { isRTL } = useLanguage();
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Ensure perfect loop by handling the ended event
+    const handleEnded = () => {
+      video.currentTime = 0;
+      video.play();
+    };
+
+    // Ensure video plays when loaded
+    const handleCanPlay = () => {
+      video.play().catch((error) => {
+        console.log("Video autoplay failed:", error);
+      });
+    };
+
+    video.addEventListener("ended", handleEnded);
+    video.addEventListener("canplay", handleCanPlay);
+
+    return () => {
+      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("canplay", handleCanPlay);
+    };
+  }, []);
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <video
+        ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
+        disablePictureInPicture
+        controlsList="nodownload"
       >
         <source src="/videos/hero-bg.mp4" type="video/mp4" />
         {t.hero.videoError}
       </video>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+      {/* Glass Overlay */}
+      <div className="absolute inset-0 bg-white/20 backdrop-blur-sm z-10 border-white/20"></div>
+
+      {/* Additional Glass Effect Layer */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-[2px] z-10"></div>
 
       {/* Hero Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-between w-full">
@@ -37,12 +72,12 @@ const Hero = () => {
             isRTL ? "md:text-right" : "md:text-left"
           }`}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
             {t.hero.headline}
           </h1>
 
           <p
-            className={`text-lg md:text-xl text-gray-200 mb-8 max-w-2xl ${
+            className={`text-lg md:text-xl text-gray-100 mb-8 max-w-2xl drop-shadow-md ${
               isRTL ? "mx-auto md:mx-0" : "mx-auto md:mx-0"
             }`}
           >
@@ -64,7 +99,7 @@ const Hero = () => {
             </a>
             <a
               href="#join-driver"
-              className="bg-transparent border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             >
               {t.hero.joinDriver}
             </a>
@@ -88,7 +123,7 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
         <div className="animate-bounce">
           <svg
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-white drop-shadow-lg"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
