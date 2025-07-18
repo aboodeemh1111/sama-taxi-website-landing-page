@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   title: "سما تاكسي - تطبيق التاكسي الموثوق في السعودية",
   description:
     "رحلتك الموثوقة، بلمسة واحدة فقط. احجز رحلات سريعة وآمنة ومريحة في جميع أنحاء المملكة العربية السعودية.",
+  icons: {
+    icon: [
+      {
+        url: "/images~/Sama Taxi-05.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    shortcut: "/images~/Sama Taxi-05.svg",
+    apple: "/images~/Sama Taxi-05.svg",
+  },
 };
 
 export default function RootLayout({
