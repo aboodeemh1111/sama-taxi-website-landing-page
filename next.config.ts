@@ -1,35 +1,62 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable static exports for better performance
-  output: "export",
-
-  // Optimize images
+  // Remove static export for Vercel deployment
+  // output: 'export', // Remove this line
+  
+  // Optimize images for Vercel
   images: {
-    unoptimized: true,
-    domains: ["localhost"],
+    domains: ['localhost'],
+    formats: ['image/webp', 'image/avif'],
   },
-
+  
   // Enable compression
   compress: true,
-
+  
   // Optimize for production
   experimental: {
     optimizeCss: true,
   },
-
-  // Trailing slash for better SEO
-  trailingSlash: true,
-
-  // Custom webpack config for optimization
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
-    return config;
+  
+  // Better performance
+  poweredByHeader: false,
+  
+  // Custom headers for security
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+    ];
+  },
+  
+  // Redirects
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+    ];
   },
 };
 

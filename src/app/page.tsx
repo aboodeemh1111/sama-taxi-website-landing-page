@@ -15,7 +15,7 @@ export default function Home() {
         <section id="home">
           <Hero />
         </section>
-        <section id="about">
+        {/* <section id="about">
           <Features />
         </section>
         <section id="how-it-works">
@@ -29,9 +29,9 @@ export default function Home() {
         </section>
         <section id="download">
           <FinalCTA />
-        </section>
+        </section> */}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

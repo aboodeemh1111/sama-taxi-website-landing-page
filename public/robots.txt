@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sama-taxi.vercel.app/sitemap.xml 
