@@ -6,6 +6,7 @@ import FemaleDrivers from "@/components/FemaleDrivers";
 import JoinDriverTeam from "@/components/JoinDriverTeam";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import Download from "@/components/Download";
 
 export default function Home() {
   return (
@@ -15,21 +16,13 @@ export default function Home() {
         <section id="home">
           <Hero />
         </section>
-        {/* <section id="about">
-          <Features />
-        </section>
+
         <section id="how-it-works">
           <HowItWorks />
         </section>
-        <section id="female-drivers">
-          <FemaleDrivers />
-        </section>
-        <section id="join-driver">
-          <JoinDriverTeam />
-        </section>
         <section id="download">
-          <FinalCTA />
-        </section> */}
+          <Download />
+        </section>
       </main>
       <Footer />
     </div>

@@ -41,20 +41,31 @@ const Footer = () => {
               <a href="#" className="group">
                 <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center hover:bg-yellow-600 transition-all duration-300 transform group-hover:scale-110 shadow-md">
                   <span className="sr-only">{t.footer.socialAlt.facebook}</span>
-                  <FaFacebookF className="w-5 h-5 text-white" />
+
+                  <a
+                    href="https://www.facebook.com/p/Sama-Taxi-61558944098623/"
+                    target="_blank"
+                  >
+                    <FaFacebookF className="w-5 h-5 text-white" />
+                  </a>
                 </div>
               </a>
               <a href="#" className="group">
                 <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center hover:bg-yellow-600 transition-all duration-300 transform group-hover:scale-110 shadow-md">
                   <span className="sr-only">{t.footer.socialAlt.twitter}</span>
-                  <FaTwitter className="w-5 h-5 text-white" />
+
+                  <a href="https://x.com/smataxi?lang=ar" target="_blank">
+                    <FaTwitter className="w-5 h-5 text-white" />
+                  </a>
                 </div>
               </a>
 
               <a href="#" className="group">
                 <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center hover:bg-yellow-600 transition-all duration-300 transform group-hover:scale-110 shadow-md">
                   <span className="sr-only">WhatsApp</span>
-                  <FaWhatsapp className="w-5 h-5 text-white" />
+                  <a href="https://wa.me/+966509185515" target="_blank">
+                    <FaWhatsapp className="w-5 h-5 text-white" />
+                  </a>
                 </div>
               </a>
             </div>

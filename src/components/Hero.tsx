@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
+import NextImage from "next/image";
 import { useEffect, useRef } from "react";
 
 const Hero = () => {
@@ -101,10 +102,12 @@ const Hero = () => {
         {/* Phone Mockup */}
         <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
           <div className="relative">
-            <img
-              src="/images/phone-mockup.png"
+            <NextImage
+              src="/images/iphone_mockup.svg"
               alt={t.hero.phoneAlt}
               className="w-[280px] md:w-[320px] lg:w-[380px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              width={300}
+              height={600}
             />
             <div className="absolute -inset-4 bg-yellow-500 bg-opacity-20 rounded-3xl blur-xl -z-10"></div>
           </div>
@@ -115,11 +118,12 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
         <div className="animate-bounce">
           <svg
-            className="w-6 h-6 text-white drop-shadow-lg"
+            width="24"
+            height="24"
             fill="none"
             stroke="currentColor"
+            className="mx-auto"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               strokeLinecap="round"
