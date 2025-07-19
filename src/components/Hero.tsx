@@ -1,8 +1,3 @@
-// Key Features
-
-// Hero Section Component
-// Purpose: Capture attention immediately, state core value, and drive app downloads
-
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -18,13 +13,11 @@ const Hero = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Ensure perfect loop by handling the ended event
     const handleEnded = () => {
       video.currentTime = 0;
       video.play();
     };
 
-    // Ensure video plays when loaded
     const handleCanPlay = () => {
       video.play().catch((error) => {
         console.log("Video autoplay failed:", error);
@@ -61,7 +54,6 @@ const Hero = () => {
       {/* Glass Overlay */}
       <div className="absolute inset-0 bg-white/20 backdrop-blur-sm z-10 border-white/20"></div>
 
-      {/* Additional Glass Effect Layer */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-[2px] z-10"></div>
 
       {/* Hero Content */}

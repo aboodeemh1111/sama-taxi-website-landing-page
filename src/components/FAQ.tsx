@@ -1,17 +1,7 @@
-// FAQ Component
-// Purpose: Answer common questions and capture long-tail keywords
+import React from "react";
 
-const FAQ = () => {
-  return (
-    <section>
-      {/* 
-      Section Heading: "Frequently Asked Questions" (text-3xl)
-      Questions (text-xl)
-      Answers (text-base)
-      Accordion functionality for expand/collapse
-      */}
-    </section>
-  );
-};
+function FAQ() {
+  return <div></div>;
+}
 
 export default FAQ;

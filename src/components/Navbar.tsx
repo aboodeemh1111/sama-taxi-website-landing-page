@@ -10,11 +10,10 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Smooth scroll function
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Account for fixed navbar height
+      const offset = 80;
       const elementPosition = element.offsetTop - offset;
 
       window.scrollTo({
@@ -22,10 +21,9 @@ const Navbar = () => {
         behavior: "smooth",
       });
     }
-    setIsMenuOpen(false); // Close mobile menu after clicking
+    setIsMenuOpen(false);
   };
 
-  // Track active section
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
@@ -135,7 +133,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <button
               onClick={() => scrollToSection("download")}
