@@ -103,7 +103,7 @@ const Hero = () => {
         <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
           <div className="relative">
             <NextImage
-              src="/images/iphone_mockup.svg"
+              src="/images~/iphone_mockup.svg"
               alt={t.hero.phoneAlt}
               className="w-[280px] md:w-[320px] lg:w-[380px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
               width={300}

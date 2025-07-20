@@ -1,8 +1,5 @@
-// Footer Component
-// Purpose: Legal information, contact, social media, navigation
-
 "use client";
-
+import Link from "next/link";
 import React from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { FaFacebookF, FaTwitter, FaWhatsapp } from "react-icons/fa";
@@ -38,36 +35,36 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex space-x-6 space-x-reverse">
-              <a href="#" className="group">
+              <Link
+                href="https://www.facebook.com/p/Sama-Taxi-61558944098623/"
+                target="_blank"
+                className="group"
+              >
                 <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center hover:bg-yellow-600 transition-all duration-300 transform group-hover:scale-110 shadow-md">
                   <span className="sr-only">{t.footer.socialAlt.facebook}</span>
-
-                  <a
-                    href="https://www.facebook.com/p/Sama-Taxi-61558944098623/"
-                    target="_blank"
-                  >
-                    <FaFacebookF className="w-5 h-5 text-white" />
-                  </a>
+                  <FaFacebookF className="w-5 h-5 text-white" />
                 </div>
-              </a>
-              <a href="#" className="group">
+              </Link>
+              <Link
+                href="https://x.com/smataxi?lang=ar"
+                target="_blank"
+                className="group"
+              >
                 <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center hover:bg-yellow-600 transition-all duration-300 transform group-hover:scale-110 shadow-md">
                   <span className="sr-only">{t.footer.socialAlt.twitter}</span>
-
-                  <a href="https://x.com/smataxi?lang=ar" target="_blank">
-                    <FaTwitter className="w-5 h-5 text-white" />
-                  </a>
+                  <FaTwitter className="w-5 h-5 text-white" />
                 </div>
-              </a>
-
-              <a href="#" className="group">
+              </Link>
+              <Link
+                href="https://wa.me/+966509185515"
+                target="_blank"
+                className="group"
+              >
                 <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center hover:bg-yellow-600 transition-all duration-300 transform group-hover:scale-110 shadow-md">
                   <span className="sr-only">WhatsApp</span>
-                  <a href="https://wa.me/+966509185515" target="_blank">
-                    <FaWhatsapp className="w-5 h-5 text-white" />
-                  </a>
+                  <FaWhatsapp className="w-5 h-5 text-white" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -78,36 +75,36 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a
+                <Link
                   href="/"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
                   {t.navbar.home}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#about"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
                   {t.navbar.about}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#download"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
                   {t.navbar.downloadApp}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#join-driver"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
                   {t.navbar.joinDriver}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -119,22 +116,21 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a
+                <Link
                   href="/privacy"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
                   {t.footer.privacyPolicy}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/terms"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
                   {t.footer.termsOfService}
-                </a>
+                </Link>
               </li>
-              <li></li>
             </ul>
           </div>
         </div>
