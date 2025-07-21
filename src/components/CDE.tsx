@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
+import get_on_app_store from "@/public/images/download/get-on-app-store.png";
+import get_on_google_play from "@/public/images/download/get-on-google-play.png";
 
 const Download = () => {
   return (
@@ -88,12 +90,7 @@ const Download = () => {
                   href="#"
                   className="bg-yellow-200 text-black px-6 py-3 rounded-full text-lg font-medium hover:bg-yellow-300 transition-all"
                 >
-                  <Image
-                    src="/images/download/app-store.png"
-                    alt="app-store"
-                    width={24}
-                    height={24}
-                  />
+                  <Image src="" alt="app-store" width={24} height={24} />
                   <span>App Store</span>
                 </a>
               </div>

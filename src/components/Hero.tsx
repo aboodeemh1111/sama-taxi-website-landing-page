@@ -5,6 +5,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 import NextImage from "next/image";
 import { useEffect, useRef } from "react";
 
+const iphone16 = "/images~/IPhone16.png";
+
 const Hero = () => {
   const { isRTL } = useLanguage();
   const { t } = useTranslation();
@@ -103,11 +105,11 @@ const Hero = () => {
         <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
           <div className="relative">
             <NextImage
-              src="/images~/iphone_mockup.svg"
-              alt={t.hero.phoneAlt}
-              className="w-[280px] md:w-[320px] lg:w-[380px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
-              width={300}
-              height={600}
+              src={iphone16}
+              alt="iphone16"
+              className="w-[280px] md:w-[420px] lg:w-[480px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              width={320}
+              height={640}
             />
             <div className="absolute -inset-4 bg-yellow-500 bg-opacity-20 rounded-3xl blur-xl -z-10"></div>
           </div>
