@@ -31,8 +31,8 @@ const Navbar = () => {
         "about",
         "how-it-works",
         "female-drivers",
-        "join-driver",
         "download",
+        "join-driver-team",
       ];
       const scrollPosition = window.scrollY + 100;
 
@@ -60,11 +60,13 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center min-w-0">
-            <img
-              src="/images~/Sama Taxi-04.svg"
-              alt="شعار سما تاكسي"
-              className="h-10 sm:h-12 w-auto flex-shrink-0"
-            />
+            <button onClick={() => scrollToSection("home")}>
+              <img
+                src="/images~/Sama Taxi-04.svg"
+                alt="شعار سما تاكسي"
+                className="h-10 sm:h-12 w-auto flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+              />
+            </button>
           </div>
 
           {/* Desktop Navigation */}
@@ -111,9 +113,9 @@ const Navbar = () => {
                 السائقات
               </button>
               <button
-                onClick={() => scrollToSection("join-driver")}
+                onClick={() => scrollToSection("join-driver-team")}
                 className={`nav-link px-3 py-2 rounded-md text-sm xl:text-base font-medium transition-colors duration-200 ${
-                  activeSection === "join-driver"
+                  activeSection === "join-driver-team"
                     ? "active text-yellow-500"
                     : "text-gray-700 hover:text-yellow-500"
                 }`}
@@ -136,7 +138,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <button
               onClick={() => scrollToSection("download")}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 transform hover:scale-105"
             >
               حمل التطبيق
             </button>
@@ -238,9 +240,9 @@ const Navbar = () => {
             السائقات
           </button>
           <button
-            onClick={() => scrollToSection("join-driver")}
+            onClick={() => scrollToSection("join-driver-team")}
             className={`block px-3 py-2 rounded-md text-base font-medium w-full text-right transition-colors duration-200 ${
-              activeSection === "join-driver"
+              activeSection === "join-driver-team"
                 ? "text-yellow-500 bg-yellow-50"
                 : "text-gray-700 hover:text-yellow-500 hover:bg-gray-50"
             }`}

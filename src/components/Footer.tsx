@@ -125,6 +125,14 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  href="/driver-conditions"
+                  className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
+                >
+                  شروط التسجيل كسائق
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/terms"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >

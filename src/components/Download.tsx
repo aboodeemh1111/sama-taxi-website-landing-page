@@ -1,54 +1,82 @@
-import NextImage from "next/image";
-import { useState, useEffect } from "react";
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Download = () => {
-  const google_play = "/images~/get_on_google_play.svg";
-  const app_store = "/images~/get_on_app_store.svg";
+  const { isRTL } = useLanguage();
+  const { t } = useTranslation();
+
   return (
-    <section className="py-20">
-      {/*Download section*/}
+    <section className="relative py-24 px-6 bg-white border-b border-gray-100">
+      <div className="relative z-10 max-w-4xl mx-auto">
+        {/* Content Container */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            جاهز لرحلتك القادمة؟ حمل تطبيق سما تاكسي الآن!
+          </h2>
+          <p className="text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
+            تجربة حجز سهلة، متابعة لحظية، ومدفوعات آمنة بانتظارك
+          </p>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            حمل التطبيق الآن واستمتع بخدماتنا المميزة في جميع أنحاء المملكة
+          </p>
+        </div>
 
-      <div className="container mx-auto">
-        {/*Top section*/}
-
-        <div className=" flex flex-col items-center justify-center gap-y-8">
-          {/*Title*/}
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-yellow-300">
-              Download the App
-            </h2>
-            <p className="text-gray-500">
-              Download to start your trip with us today
-            </p>
+        {/* Qr Code*/}
+        <div className="flex justify-center mb-12">
+          <div className="relative">
+            <Image
+              src="/images~/Sama App Download.png"
+              alt="لقطة شاشة لتطبيق سما تاكسي"
+              width={400}
+              height={300}
+              className="drop-shadow-2xl transform hover:scale-105 transition-transform duration-300 rounded-3xl"
+            />
+            <div className="absolute -inset-4 bg-yellow-500 bg-opacity-20 rounded-3xl blur-xl -z-10"></div>
           </div>
         </div>
 
-        {/*Bottom section*/}
-        <div className="flex flex-row">
-          <div className="basis-1/3">
-            <div className="flex flex-col items-center justify-center gap-y-8 bg-gray-50">
-              <h2 className="text-2xl font-bold text-yellow-300">
-                Start your trip with us today
-              </h2>
+        {/* Download Buttons */}
+        <div
+          className={`flex flex-col sm:flex-row justify-center items-center gap-6 mb-8 ${
+            isRTL ? "space-x-reverse" : ""
+          }`}
+        >
+          <Link
+            href="#"
+            className="group transform hover:scale-105 transition-all duration-300"
+          >
+            <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <Image
+                src="/images~/get_on_app_store.svg"
+                alt="تحميل من آب ستور"
+                width={180}
+                height={60}
+                className="h-14 w-auto"
+              />
             </div>
-            <div className="basis-1/3">
-              <div className="flex flex-col items-center justify-center gap-y-8 bg-gray-50">
-                <h3 className="text-2xl font-bold text-yellow-300">
-                  Download on the{" "}
-                  <span className="text-gray-500">App Store</span>
-                </h3>
-              </div>
-              <div className="basis-1/3">
-                <div className="flex flex-col items-center justify-center gap-y-8 bg-gray-50">
-                  <h3 className="text-2xl font-bold text-yellow-300">
-                    Download on the{" "}
-                    <span className="text-gray-500">Google Play</span>
-                  </h3>
-                </div>
-              </div>
+          </Link>
+
+          <Link
+            href="#"
+            className="group transform hover:scale-105 transition-all duration-300"
+          >
+            <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <Image
+                src="/images~/get_on_google_play.svg"
+                alt="تحميل من جوجل بلاي"
+                width={180}
+                height={60}
+                className="h-14 w-auto"
+              />
             </div>
-          </div>
+          </Link>
         </div>
+
+        {/* Learn More Button */}
       </div>
     </section>
   );
