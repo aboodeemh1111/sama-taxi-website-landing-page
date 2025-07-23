@@ -3,11 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/useTranslation";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutTheApp = () => {
-  const { t } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { t, isRTL } = useTranslation();
   return (
     <section id="about" className="relative py-24 px-6 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto">

@@ -4,11 +4,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 function FemaleDrivers() {
-  const { t } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { t, isRTL } = useTranslation();
   return (
     <section
       id="female-drivers"
@@ -50,7 +48,7 @@ function FemaleDrivers() {
               <div className="relative bg-white rounded-3xl p-4 shadow-2xl">
                 <div className="aspect-square rounded-2xl overflow-hidden bg-black">
                   <Image
-                    src="/female-drive.png"
+                    src="/images~/female_driver2.png"
                     alt={t.femaleDrivers.title}
                     width={500}
                     height={500}

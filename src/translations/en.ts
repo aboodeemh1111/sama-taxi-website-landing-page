@@ -88,6 +88,52 @@ export const en = {
     downloadAndroid: "Download Captain App for Android",
     downloadIphone: "Download Captain App for iPhone",
     learnMore: "Learn more about joining",
+    appShowcaseTitle: "How does Sama Captain App work?",
+    appShowcaseSubtitle:
+      "Easy and advanced app to manage your trips and earnings",
+    features: {
+      tripDetails: {
+        title: "Trip Details Before Acceptance",
+        description: "View all trip details and fare before accepting",
+        detailedDescription:
+          "The app shows you all important information about the trip before accepting it, including pickup point, destination, estimated distance, and expected fare. This helps you make an informed decision before accepting the trip.",
+      },
+      serviceControl: {
+        title: "Control Your Services",
+        description: "Enable or disable services as you wish",
+        detailedDescription:
+          "The app gives you complete control over the types of services you want to provide. You can enable or disable specific services based on your preferences and available time, giving you flexibility in work.",
+      },
+      recentTrips: {
+        title: "Recent Trips",
+        description: "Track your trips and daily earnings",
+        detailedDescription:
+          "Easily review your previous trip history and track your daily, weekly, and monthly earnings. This helps you monitor your performance and improve your work strategy to increase income.",
+      },
+      paymentHistory: {
+        title: "Payment History",
+        description: "Review your payment history and earnings",
+        detailedDescription:
+          "The app provides a detailed record of all your payments and earnings, with the ability to filter data by date and payment type. This helps you manage your money and plan financially better.",
+      },
+      mainApp: {
+        title: "Sama Connects You and Takes You",
+        description: "Simple and easy-to-use interface",
+        detailedDescription:
+          "Sama Captain app is designed with a simple and intuitive interface that makes it extremely easy to use. All features are at your fingertips with just a few clicks, saving you time and making your work experience more comfortable.",
+      },
+    },
+    modal: {
+      featureLabel: "Feature",
+      nextFeature: "Next Feature",
+      backToStart: "Back to Start",
+      close: "Close",
+      moreDetails: "More Details:",
+      keyBenefits: "Key Benefits:",
+      useArrowsHint: "Use arrows to navigate or press ESC to close",
+      clickToEnlarge: "Click to Enlarge",
+      freeeasy: "Free and easy-to-use app",
+    },
   },
 
   // Final CTA Section
@@ -122,5 +168,16 @@ export const en = {
     title: "Sama Taxi - Your Trusted Partner for Every Journey",
     description:
       "Exceptional transportation experience throughout Saudi Arabia. Comfort, safety, and unmatched professionalism at competitive prices.",
+  },
+
+  // Common UI Elements
+  common: {
+    loading: "Loading...",
+    error: "An error occurred",
+    tryAgain: "Try Again",
+    close: "Close",
+    next: "Next",
+    previous: "Previous",
+    clickToEnlarge: "Click to Enlarge",
   },
 };

@@ -1,6 +1,5 @@
 "use client";
 
-import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
 import NextImage from "next/image";
 import { useEffect, useRef } from "react";
@@ -8,8 +7,7 @@ import { useEffect, useRef } from "react";
 const iphone16 = "/images~/IPhone16.png";
 
 const Hero = () => {
-  const { isRTL } = useLanguage();
-  const { t } = useTranslation();
+  const { t, isRTL } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -49,6 +47,7 @@ const Hero = () => {
         preload="auto"
         disablePictureInPicture
         controlsList="nodownload"
+        suppressHydrationWarning
       >
         <source src="/videos/hero-bg.mp4" type="video/mp4" />
         {t.hero.videoError}

@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const { t } = useTranslation();
-  const { language, setLanguage, isRTL } = useLanguage();
+  const { t, language, setLanguage, isRTL } = useTranslation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const Download = () => {
-  const { isRTL } = useLanguage();
-  const { t } = useTranslation();
+  const { t, isRTL } = useTranslation();
 
   return (
     <section className="relative py-24 px-6 bg-white border-b border-gray-100">
