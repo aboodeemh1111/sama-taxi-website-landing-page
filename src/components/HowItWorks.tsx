@@ -1,32 +1,37 @@
-import NextImage from "next/image";
+"use client";
 
-const steps = [
-  {
-    title: "اختر موقعك",
-    description: "حدد موقعك الحالي بسهولة على الخريطة لطلب سيارة بسرعة وسهولة.",
-    img: "/images~/iphone_mockup.svg",
-  },
-  {
-    title: "حدد وجهتك",
-    description: "أدخل وجهتك وسيتم عرض أقرب السائقين المتاحين لك.",
-    img: "/images~/iphone_mockup.svg",
-  },
-  {
-    title: "انطلق بأمان",
-    description:
-      "استمتع برحلتك مع سائقينا الموثوقين وادفع بالطريقة التي تناسبك.",
-    img: "/images~/iphone_mockup.svg",
-  },
-];
+import NextImage from "next/image";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+  const { isRTL } = useLanguage();
+
+  const steps = [
+    {
+      title: t.howItWorks.step1.title,
+      description: t.howItWorks.step1.description,
+      img: "/images~/iphone_mockup.svg",
+    },
+    {
+      title: t.howItWorks.step2.title,
+      description: t.howItWorks.step2.description,
+      img: "/images~/iphone_mockup.svg",
+    },
+    {
+      title: t.howItWorks.step3.title,
+      description: t.howItWorks.step3.description,
+      img: "/images~/iphone_mockup.svg",
+    },
+  ];
   return (
     <section
       id="how-it-works"
       className="py-16 bg-gray-50 w-full flex flex-col items-center justify-center"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-10 text-center">
-        كيف يعمل التطبيق؟
+        {t.howItWorks.title}
       </h2>
       <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-5xl rtl">
         {steps.map((step, idx) => (

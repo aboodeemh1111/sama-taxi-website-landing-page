@@ -37,7 +37,7 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Only run on client side
+    // Only run on client side after hydration
     if (typeof window !== "undefined") {
       const savedLanguage = localStorage.getItem("language") as Language;
       if (savedLanguage && (savedLanguage === "ar" || savedLanguage === "en")) {
@@ -56,21 +56,22 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     }
   }, [language, isInitialized]);
 
+  const setLanguageHandler = (lang: Language) => {
+    setLanguage(lang);
+  };
+
   const isRTL = language === "ar";
 
-  // Prevent hydration mismatch
-  if (!isInitialized) {
-    return (
-      <LanguageContext.Provider
-        value={{ language: "ar", setLanguage: () => {}, isRTL: true }}
-      >
-        {children}
-      </LanguageContext.Provider>
-    );
-  }
-
+  // Prevent hydration mismatch by always providing the same initial state
+  // and only allowing language changes after hydration
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, isRTL }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage: isInitialized ? setLanguageHandler : () => {},
+        isRTL,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

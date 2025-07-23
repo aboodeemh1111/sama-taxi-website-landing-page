@@ -2,8 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutTheApp = () => {
+  const { t } = useTranslation();
+  const { isRTL } = useLanguage();
   return (
     <section id="about" className="relative py-24 px-6 bg-white">
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -13,28 +17,20 @@ const AboutTheApp = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                عن تطبيق
-                <span className="text-yellow-500"> سما تاكسي</span>
+                {t.features.title}
               </h2>
 
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p className="text-xl font-medium text-gray-800">
-                  تطبيق سما هو تطبيق حجز السيارات وتوصيل الطلبات في السعودية
+                  {t.features.feature1.description}
                 </p>
 
-                <p>يوفر لك طريقة مناسبة يمكنك الوثوق بها للتنقل وبسعر مقبول.</p>
+                <p>{t.features.feature2.description}</p>
 
-                <p>
-                  لا مشاكل زحمة ومواقف بعد الآن! تطبيق سما هو الحل لمشاويرك
-                  اليومية، ومشاويرك للعمل، أو للمطار، وتوصيل الطلبات.
-                </p>
+                <p>{t.features.feature3.description}</p>
 
                 <p className="font-medium text-gray-800">
-                  احجز مشوارك مع سما لتصلك سيارتك خلال دقائق.
-                </p>
-
-                <p className="text-yellow-600 font-semibold text-xl">
-                  حمل التطبيق واستمتع بخدماتنا الغير محدودة.
+                  {t.features.feature4.description}
                 </p>
               </div>
             </div>
@@ -59,9 +55,11 @@ const AboutTheApp = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
-                    خدمة سريعة
+                    {t.features.feature4.title}
                   </h3>
-                  <p className="text-gray-600">وصول السيارة خلال دقائق</p>
+                  <p className="text-gray-600">
+                    {t.features.feature4.description}
+                  </p>
                 </div>
               </div>
 
@@ -83,9 +81,11 @@ const AboutTheApp = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
-                    أسعار مقبولة
+                    {t.features.feature3.title}
                   </h3>
-                  <p className="text-gray-600">تكلفة معقولة وواضحة</p>
+                  <p className="text-gray-600">
+                    {t.features.feature3.description}
+                  </p>
                 </div>
               </div>
 
@@ -113,9 +113,11 @@ const AboutTheApp = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
-                    تغطية واسعة
+                    {t.features.feature1.title}
                   </h3>
-                  <p className="text-gray-600">في جميع أنحاء السعودية</p>
+                  <p className="text-gray-600">
+                    {t.features.feature1.description}
+                  </p>
                 </div>
               </div>
 
@@ -137,9 +139,11 @@ const AboutTheApp = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
-                    موثوق وآمن
+                    {t.features.feature2.title}
                   </h3>
-                  <p className="text-gray-600">سائقون مدربون ومعتمدون</p>
+                  <p className="text-gray-600">
+                    {t.features.feature2.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -150,7 +154,7 @@ const AboutTheApp = () => {
                 href="#download"
                 className="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                حمل التطبيق الآن
+                {t.navbar.downloadApp}
               </Link>
             </div>
           </div>
@@ -161,7 +165,7 @@ const AboutTheApp = () => {
               <div className="relative">
                 <Image
                   src="/images~/IPhone16.png"
-                  alt="تطبيق سما تاكسي"
+                  alt={t.hero.phoneAlt}
                   width={400}
                   height={500}
                   className="drop-shadow-2xl transform hover:scale-105 transition-transform duration-300 rounded-3xl"
@@ -174,7 +178,7 @@ const AboutTheApp = () => {
                 <div className="flex items-center space-x-3 space-x-reverse">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <span className="text-sm font-medium text-gray-700">
-                    متاح الآن
+                    {t.features.feature4.title}
                   </span>
                 </div>
               </div>
@@ -182,7 +186,7 @@ const AboutTheApp = () => {
               <div className="absolute -bottom-4 -right-4 bg-yellow-500 text-white rounded-2xl shadow-lg p-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold">24/7</div>
-                  <div className="text-xs">خدمة متواصلة</div>
+                  <div className="text-xs">{t.features.feature4.title}</div>
                 </div>
               </div>
             </div>

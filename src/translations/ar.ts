@@ -8,6 +8,9 @@ export const ar = {
     privacy: "سياسة الخصوصية",
     toggleMenu: "فتح قائمة التنقل",
     logoAlt: "شعار سما تاكسي",
+    howItWorks: "كيف يعمل",
+    femaleDrivers: "السائقات",
+    languageToggle: "اللغة",
   },
 
   // Hero Section

@@ -15,15 +15,13 @@ const JoinDriverTeam = () => {
         {/* Content Container */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            انضم إلى عائلة سما تاكسي: ابدأ رحلة الكسب معنا!
+            {t.joinDriverTeam.title}
           </h2>
           <p className="text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
-            هل أنت سائق أو سائقة تبحث عن فرص مرنة ودخل مجزٍ؟ انضم إلى شبكة كباتن
-            سما تاكسي المتنامية وكن جزءاً من مستقبل النقل في المملكة.
+            {t.joinDriverTeam.description1}
           </p>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            نحن ندعمك بالكامل: من تطبيق سهل الاستخدام للكباتن إلى دعم فني
-            متواصل. ابدأ قيادتك معنا اليوم!
+            {t.joinDriverTeam.description2}
           </p>
         </div>
 
@@ -32,7 +30,7 @@ const JoinDriverTeam = () => {
           <div className="relative">
             <Image
               src="/images~/Sama Captains.png"
-              alt="كباتن سما تاكسي"
+              alt={t.joinDriverTeam.title}
               width={400}
               height={300}
               className="drop-shadow-2xl transform hover:scale-105 transition-transform duration-300 rounded-3xl"
@@ -54,7 +52,7 @@ const JoinDriverTeam = () => {
             <div className="bg-white hover:bg-gray-50 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
               <Image
                 src="/images~/get_on_app_store.svg"
-                alt="حمل تطبيق الكابتن للايفون"
+                alt={t.joinDriverTeam.downloadIphone}
                 width={180}
                 height={60}
                 className="h-14 w-auto"
@@ -69,7 +67,7 @@ const JoinDriverTeam = () => {
             <div className="bg-white hover:bg-gray-50 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
               <Image
                 src="/images~/get_on_google_play.svg"
-                alt="حمل تطبيق الكابتن للاندرويد"
+                alt={t.joinDriverTeam.downloadAndroid}
                 width={180}
                 height={60}
                 className="h-14 w-auto"
@@ -84,7 +82,7 @@ const JoinDriverTeam = () => {
             href="/driver-conditions"
             className="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            شروط التسجيل كسائق
+            {t.joinDriverTeam.learnMore}
           </Link>
         </div>
       </div>

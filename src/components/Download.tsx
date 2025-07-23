@@ -15,13 +15,10 @@ const Download = () => {
         {/* Content Container */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            جاهز لرحلتك القادمة؟ حمل تطبيق سما تاكسي الآن!
+            {t.finalCTA.title}
           </h2>
           <p className="text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
-            تجربة حجز سهلة، متابعة لحظية، ومدفوعات آمنة بانتظارك
-          </p>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            حمل التطبيق الآن واستمتع بخدماتنا المميزة في جميع أنحاء المملكة
+            {t.finalCTA.subtitle}
           </p>
         </div>
 
@@ -30,7 +27,7 @@ const Download = () => {
           <div className="relative">
             <Image
               src="/images~/Sama App Download.png"
-              alt="لقطة شاشة لتطبيق سما تاكسي"
+              alt={t.hero.phoneAlt}
               width={400}
               height={300}
               className="drop-shadow-2xl transform hover:scale-105 transition-transform duration-300 rounded-3xl"
@@ -52,7 +49,7 @@ const Download = () => {
             <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
               <Image
                 src="/images~/get_on_app_store.svg"
-                alt="تحميل من آب ستور"
+                alt={t.finalCTA.downloadIphone}
                 width={180}
                 height={60}
                 className="h-14 w-auto"
@@ -67,7 +64,7 @@ const Download = () => {
             <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
               <Image
                 src="/images~/get_on_google_play.svg"
-                alt="تحميل من جوجل بلاي"
+                alt={t.finalCTA.downloadAndroid}
                 width={180}
                 height={60}
                 className="h-14 w-auto"

@@ -3,8 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function FemaleDrivers() {
+  const { t } = useTranslation();
+  const { isRTL } = useLanguage();
   return (
     <section
       id="female-drivers"
@@ -21,17 +25,15 @@ function FemaleDrivers() {
         {/* Header Section */}
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
-            سائقات
-            <span className="text-yellow-500"> سما</span>
+            {t.femaleDrivers.title}
           </h2>
 
           <div className="max-w-4xl mx-auto space-y-4">
-            <p className="text-2xl font-semibold text-gray-800">
-              احترافية، أمان، وثقة في كل رحلة
+            <p className="text-xl text-gray-600 leading-relaxed">
+              {t.femaleDrivers.description1}
             </p>
             <p className="text-xl text-gray-600 leading-relaxed">
-              في سما تاكسي، نفخر بتقديم خدمة مميزة عبر فريق من السائقات
-              المحترفات
+              {t.femaleDrivers.description2}
             </p>
           </div>
         </div>
@@ -49,7 +51,7 @@ function FemaleDrivers() {
                 <div className="aspect-square rounded-2xl overflow-hidden bg-black">
                   <Image
                     src="/female-drive.png"
-                    alt="سائقة سما تاكسي محترفة"
+                    alt={t.femaleDrivers.title}
                     width={500}
                     height={500}
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
@@ -118,7 +120,7 @@ function FemaleDrivers() {
                 href="#download"
                 className="group inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                <span>اطلبي رحلة مع سائقة</span>
+                <span>{t.femaleDrivers.requestRide}</span>
                 <svg
                   className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -141,10 +143,10 @@ function FemaleDrivers() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              شاهدي تجربة سائقات سما تاكسي
+              {t.femaleDrivers.title}
             </h3>
             <p className="text-xl text-gray-600">
-              اكتشفي مدى احترافية وأمان خدمة السائقات لدينا
+              {t.femaleDrivers.description1}
             </p>
           </div>
 
@@ -155,7 +157,7 @@ function FemaleDrivers() {
                 <div className="aspect-video rounded-2xl overflow-hidden">
                   <iframe
                     src="https://www.youtube.com/embed/UFlF3Kz1t8g"
-                    title="سائقات سما تاكسي"
+                    title={t.femaleDrivers.title}
                     className="w-full h-full"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -174,13 +176,11 @@ function FemaleDrivers() {
           <div className="relative bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-12 text-center shadow-lg">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                راحتك وأمانك
-                <span className="text-yellow-500">أولويتنا</span>
+                {t.femaleDrivers.title}
               </h3>
 
               <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                انضمي إلى آلاف السيدات اللاتي يثقن في خدمة سائقات سما تاكسي
-                يومياً
+                {t.femaleDrivers.description2}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
@@ -188,7 +188,7 @@ function FemaleDrivers() {
                   href="#download"
                   className="group bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
                 >
-                  <span>حملي التطبيق الآن</span>
+                  <span>{t.navbar.downloadApp}</span>
                   <svg
                     className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform"
                     fill="none"
@@ -209,7 +209,7 @@ function FemaleDrivers() {
                   target="_blank"
                   className="group bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
                 >
-                  <span>تواصلي معنا عبر واتساب</span>
+                  <span>{t.femaleDrivers.requestRide}</span>
                   <svg
                     className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform"
                     fill="currentColor"
