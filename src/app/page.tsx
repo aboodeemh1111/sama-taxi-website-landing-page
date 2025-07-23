@@ -31,9 +31,9 @@ export default function Home() {
         <section id="download">
           <Download />
         </section>
-        <section id="join-driver-team">
+        {/* <section id="join-driver-team">
           <JoinDriverTeam />
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>
