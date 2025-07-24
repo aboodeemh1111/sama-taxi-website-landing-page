@@ -41,7 +41,9 @@ const Download = () => {
           }`}
         >
           <Link
-            href="#"
+            href="https://apps.apple.com/sa/app/sama-taxi-delivery/id1605081866?l=ar"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group transform hover:scale-105 transition-all duration-300"
           >
             <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -56,7 +58,9 @@ const Download = () => {
           </Link>
 
           <Link
-            href="#"
+            href="https://play.google.com/store/apps/details?id=com.multibrains.taxi.passenger.samtaxisaudi&pcampaignid=web_share"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group transform hover:scale-105 transition-all duration-300"
           >
             <div className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">

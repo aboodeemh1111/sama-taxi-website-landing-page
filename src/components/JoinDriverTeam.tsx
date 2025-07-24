@@ -393,7 +393,9 @@ const JoinDriverTeam = () => {
             }`}
           >
             <Link
-              href="#"
+              href="https://apps.apple.com/us/app/sama-driver/id1605081599"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group transform hover:scale-105 transition-all duration-300"
             >
               <div className="bg-white hover:bg-gray-50 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -408,7 +410,9 @@ const JoinDriverTeam = () => {
             </Link>
 
             <Link
-              href="#"
+              href="https://play.google.com/store/apps/details?id=com.multibrains.taxi.driver.samtaxisaudi&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group transform hover:scale-105 transition-all duration-300"
             >
               <div className="bg-white hover:bg-gray-50 border border-gray-200 rounded-2xl p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
