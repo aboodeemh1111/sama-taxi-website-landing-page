@@ -7,6 +7,26 @@ import { useTranslation } from "@/hooks/useTranslation";
 
 function FemaleDrivers() {
   const { t, isRTL } = useTranslation();
+
+  const features = [
+    {
+      title: t.femaleDrivers.features.trainedDrivers.title,
+      subtitle: t.femaleDrivers.features.trainedDrivers.subtitle,
+    },
+    {
+      title: t.femaleDrivers.features.safetyPrivacy.title,
+      subtitle: t.femaleDrivers.features.safetyPrivacy.subtitle,
+    },
+    {
+      title: t.femaleDrivers.features.availableService.title,
+      subtitle: t.femaleDrivers.features.availableService.subtitle,
+    },
+    {
+      title: t.femaleDrivers.features.comfortableExperience.title,
+      subtitle: t.femaleDrivers.features.comfortableExperience.subtitle,
+    },
+  ];
+
   return (
     <section
       id="female-drivers"
@@ -21,7 +41,7 @@ function FemaleDrivers() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
-        <div className="text-center mb-20">
+        <div className={`${isRTL ? "text-right" : "text-center"} mb-20`}>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
             {t.femaleDrivers.title}
           </h2>
@@ -39,7 +59,7 @@ function FemaleDrivers() {
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Female Driver Image */}
-          <div className="relative">
+          <div className={`relative ${isRTL ? "order-2 lg:order-1" : ""}`}>
             <div className="relative group">
               {/* Decorative Frame */}
               <div className="absolute -inset-4 bg-yellow-500/30 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
@@ -58,56 +78,85 @@ function FemaleDrivers() {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-6 -right-6 bg-yellow-500 text-white px-6 py-3 rounded-full font-bold shadow-lg transform rotate-12">
-                محترفة
+              <div
+                className={`absolute -top-6 ${
+                  isRTL ? "-left-6" : "-right-6"
+                } bg-yellow-500 text-white px-6 py-3 rounded-full font-bold shadow-lg transform ${
+                  isRTL ? "-rotate-12" : "rotate-12"
+                }`}
+              >
+                {t.femaleDrivers.professionalBadge}
               </div>
 
-              <div className="absolute -bottom-6 -left-6 bg-white border-2 border-yellow-200 px-6 py-3 rounded-full font-semibold text-yellow-600 shadow-lg transform -rotate-6">
-                موثوقة
+              <div
+                className={`absolute -bottom-6 ${
+                  isRTL ? "-right-6" : "-left-6"
+                } bg-white border-2 border-yellow-200 px-6 py-3 rounded-full font-semibold text-yellow-600 shadow-lg transform ${
+                  isRTL ? "rotate-6" : "-rotate-6"
+                }`}
+              >
+                {t.femaleDrivers.reliableBadge}
               </div>
             </div>
           </div>
 
           {/* Content Section */}
-          <div className="space-y-8">
+          <div
+            className={`space-y-8 ${
+              isRTL ? "order-1 lg:order-2 text-right" : "text-left"
+            }`}
+          >
             <div className="space-y-6">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                خدمة مخصصة
-                <span className="text-yellow-500"> للسيدات والعائلات</span>
+                {t.femaleDrivers.specializedServiceTitle}
+                <span className="text-yellow-500">
+                  {" "}
+                  {t.femaleDrivers.specializedServiceSubtitle}
+                </span>
               </h3>
 
               <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                <p className="relative pl-6">
-                  <span className="absolute right-0 top-1 w-2 h-2 bg-yellow-500 rounded-full"></span>
-                  تتمتع سائقات "سما تاكسي" بالموثوقية والاحترافية في كل جانب من
-                  جوانب الخدمة، حيث تضمن للعميلات التنقل بأمان وراحة دون أي
-                  مشكلات أو مضايقات.
+                <p className={`relative ${isRTL ? "pr-6" : "pl-6"}`}>
+                  <span
+                    className={`absolute ${
+                      isRTL ? "left-0" : "right-0"
+                    } top-1 w-2 h-2 bg-yellow-500 rounded-full`}
+                  ></span>
+                  {t.femaleDrivers.detailedDescription1}
                 </p>
 
-                <p className="relative pl-6">
-                  <span className="absolute right-0 top-1 w-2 h-2 bg-yellow-500 rounded-full"></span>
-                  تتميز سائقاتنا بالاهتمام بتوفير بيئة مريحة وودية للراكبات، مما
-                  يجعل كل رحلة معهن تجربة ممتعة ومثالية.
+                <p className={`relative ${isRTL ? "pr-6" : "pl-6"}`}>
+                  <span
+                    className={`absolute ${
+                      isRTL ? "left-0" : "right-0"
+                    } top-1 w-2 h-2 bg-yellow-500 rounded-full`}
+                  ></span>
+                  {t.femaleDrivers.detailedDescription2}
                 </p>
               </div>
             </div>
 
             {/* Features Grid */}
             <div className="grid grid-cols-2 gap-4">
-              {[
-                { title: "سائقات مدربات", subtitle: "ومعتمدات" },
-                { title: "أمان وخصوصية", subtitle: "تامة" },
-                { title: "خدمة على", subtitle: "مدار الساعة" },
-                { title: "تجربة مريحة", subtitle: "وودية" },
-              ].map((feature, index) => (
+              {features.map((feature, index) => (
                 <div
                   key={index}
                   className="group bg-gray-50 hover:bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <h4 className="font-bold text-gray-800 text-sm mb-1">
+                  <h4
+                    className={`font-bold text-gray-800 text-sm mb-1 ${
+                      isRTL ? "text-right" : "text-left"
+                    }`}
+                  >
                     {feature.title}
                   </h4>
-                  <p className="text-xs text-gray-600">{feature.subtitle}</p>
+                  <p
+                    className={`text-xs text-gray-600 ${
+                      isRTL ? "text-right" : "text-left"
+                    }`}
+                  >
+                    {feature.subtitle}
+                  </p>
                 </div>
               ))}
             </div>
@@ -116,11 +165,15 @@ function FemaleDrivers() {
             <div className="pt-6">
               <Link
                 href="#download"
-                className="group inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className={`group inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
+                  isRTL ? "flex-row-reverse" : ""
+                }`}
               >
                 <span>{t.femaleDrivers.requestRide}</span>
                 <svg
-                  className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform"
+                  className={`w-5 h-5 ${isRTL ? "ml-3" : "mr-3"} group-hover:${
+                    isRTL ? "-translate-x-1" : "translate-x-1"
+                  } transition-transform`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -129,7 +182,7 @@ function FemaleDrivers() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
+                    d={isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"}
                   />
                 </svg>
               </Link>
@@ -139,7 +192,7 @@ function FemaleDrivers() {
 
         {/* Video Section */}
         <div className="mb-20">
-          <div className="text-center mb-12">
+          <div className={`${isRTL ? "text-right" : "text-center"} mb-12`}>
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               {t.femaleDrivers.title}
             </h3>
@@ -171,7 +224,11 @@ function FemaleDrivers() {
         <div className="relative">
           <div className="absolute inset-0 bg-yellow-500/10 rounded-3xl blur-3xl"></div>
 
-          <div className="relative bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-12 text-center shadow-lg">
+          <div
+            className={`relative bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-12 shadow-lg ${
+              isRTL ? "text-right" : "text-center"
+            }`}
+          >
             <div className="max-w-4xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 {t.femaleDrivers.title}
@@ -181,14 +238,26 @@ function FemaleDrivers() {
                 {t.femaleDrivers.description2}
               </p>
 
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+              <div
+                className={`flex flex-col sm:flex-row ${
+                  isRTL
+                    ? "justify-center items-center"
+                    : "justify-center items-center"
+                } gap-6`}
+              >
                 <Link
                   href="#download"
-                  className="group bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
+                  className={`group bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center ${
+                    isRTL ? "flex-row-reverse" : ""
+                  }`}
                 >
                   <span>{t.navbar.downloadApp}</span>
                   <svg
-                    className="w-5 h-5 mr-3 group-hover:translate-x-1 transition-transform"
+                    className={`w-5 h-5 ${
+                      isRTL ? "ml-3" : "mr-3"
+                    } group-hover:${
+                      isRTL ? "-translate-x-1" : "translate-x-1"
+                    } transition-transform`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -205,11 +274,15 @@ function FemaleDrivers() {
                 <Link
                   href="https://wa.me/+966509185515"
                   target="_blank"
-                  className="group bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
+                  className={`group bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 inline-flex items-center ${
+                    isRTL ? "flex-row-reverse" : ""
+                  }`}
                 >
                   <span>{t.femaleDrivers.requestRide}</span>
                   <svg
-                    className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform"
+                    className={`w-5 h-5 ${
+                      isRTL ? "ml-3" : "mr-3"
+                    } group-hover:scale-110 transition-transform`}
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >

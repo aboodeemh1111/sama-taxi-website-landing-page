@@ -21,7 +21,7 @@ export const en = {
     downloadApp: "Download App",
     joinDriver: "Join as Driver",
     phoneAlt: "Sama Taxi app interface showing booking screen",
-    videoError: "Your browser does not support video playback.",
+    videoError: "Your browser does not support video playbook.",
   },
 
   // Features Section (About/Services)
@@ -98,6 +98,35 @@ export const en = {
     description2:
       "Because your comfort and safety are our priority, you can now easily and confidently request a car driven by a woman.",
     requestRide: "Request a ride with a female driver",
+
+    // Extended content for the detailed section
+    professionalBadge: "Professional",
+    reliableBadge: "Reliable",
+    specializedServiceTitle: "Specialized Service",
+    specializedServiceSubtitle: "for Ladies and Families",
+    detailedDescription1:
+      "Sama Taxi female drivers enjoy reliability and professionalism in every aspect of the service, ensuring customers travel safely and comfortably without any problems or harassment.",
+    detailedDescription2:
+      "Our female drivers are distinguished by their care in providing a comfortable and friendly environment for passengers, making every trip with them an enjoyable and ideal experience.",
+
+    features: {
+      trainedDrivers: {
+        title: "Trained Drivers",
+        subtitle: "and certified",
+      },
+      safetyPrivacy: {
+        title: "Safety & Privacy",
+        subtitle: "complete",
+      },
+      availableService: {
+        title: "24/7 Service",
+        subtitle: "available",
+      },
+      comfortableExperience: {
+        title: "Comfortable Experience",
+        subtitle: "and friendly",
+      },
+    },
   },
 
   // Join Driver Team Section
@@ -200,6 +229,8 @@ export const en = {
 
   // Footer
   footer: {
+    companyName: "Sama",
+    companyNameHighlight: "Taxi",
     description:
       "The trusted taxi app in Saudi Arabia. Exceptional transportation experience at competitive prices.",
     quickLinks: "Quick Links",

@@ -96,6 +96,35 @@ export const ar = {
     description2:
       "لأن راحتكم وأمانكم أولويتنا، يمكنك الآن طلب سيارة تقودها امرأة بكل سهولة وثقة.",
     requestRide: "اطلب رحلة مع سائقة",
+
+    // Extended content for the detailed section
+    professionalBadge: "محترفة",
+    reliableBadge: "موثوقة",
+    specializedServiceTitle: "خدمة مخصصة",
+    specializedServiceSubtitle: "للسيدات والعائلات",
+    detailedDescription1:
+      'تتمتع سائقات "سما تاكسي" بالموثوقية والاحترافية في كل جانب من جوانب الخدمة، حيث تضمن للعميلات التنقل بأمان وراحة دون أي مشكلات أو مضايقات.',
+    detailedDescription2:
+      "تتميز سائقاتنا بالاهتمام بتوفير بيئة مريحة وودية للراكبات، مما يجعل كل رحلة معهن تجربة ممتعة ومثالية.",
+
+    features: {
+      trainedDrivers: {
+        title: "سائقات مدربات",
+        subtitle: "ومعتمدات",
+      },
+      safetyPrivacy: {
+        title: "أمان وخصوصية",
+        subtitle: "تامة",
+      },
+      availableService: {
+        title: "خدمة على",
+        subtitle: "مدار الساعة",
+      },
+      comfortableExperience: {
+        title: "تجربة مريحة",
+        subtitle: "وودية",
+      },
+    },
   },
 
   // Join Driver Team Section
@@ -196,6 +225,8 @@ export const ar = {
 
   // Footer
   footer: {
+    companyName: "سما",
+    companyNameHighlight: "تاكسي",
     description:
       "تطبيق التاكسي الموثوق في المملكة العربية السعودية. تجربة توصيل استثنائية بأسعار تنافسية.",
     quickLinks: "روابط سريعة",

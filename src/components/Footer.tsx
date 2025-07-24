@@ -5,7 +5,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { FaFacebookF, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, isRTL } = useTranslation();
 
   return (
     <footer className="bg-white text-gray-900 py-16 relative overflow-hidden border-t border-gray-200">
@@ -21,20 +21,35 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <div className="flex items-center mb-6">
+            <div
+              className={`flex items-center mb-6 ${
+                isRTL ? "justify-start" : "justify-start"
+              }`}
+            >
               <span className="text-3xl font-bold">
-                سما<span className="text-yellow-500">تاكسي</span>
+                {t.footer.companyName}
+                <span className="text-yellow-500">
+                  {t.footer.companyNameHighlight}
+                </span>
               </span>
             </div>
-            <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+            <p
+              className={`text-gray-600 mb-6 leading-relaxed text-lg ${
+                isRTL ? "text-right" : "text-left"
+              }`}
+            >
               {t.footer.description}
             </p>
-            <p className="text-yellow-500 font-semibold mb-8 text-xl">
+            <p
+              className={`text-yellow-500 font-semibold mb-8 text-xl ${
+                isRTL ? "text-right" : "text-left"
+              }`}
+            >
               {t.footer.slogan}
             </p>
 
             {/* Social Links */}
-            <div className="flex space-x-6 space-x-reverse">
+            <div className={`flex space-x-6 ${isRTL ? "space-x-reverse" : ""}`}>
               <Link
                 href="https://www.facebook.com/p/Sama-Taxi-61558944098623/"
                 target="_blank"
@@ -69,7 +84,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className={isRTL ? "text-right" : "text-left"}>
             <h3 className="text-xl font-bold mb-6 text-yellow-500">
               {t.footer.quickLinks}
             </h3>
@@ -110,7 +125,7 @@ const Footer = () => {
           </div>
 
           {/* Legal */}
-          <div>
+          <div className={isRTL ? "text-right" : "text-left"}>
             <h3 className="text-xl font-bold mb-6 text-yellow-500">
               {t.footer.legal}
             </h3>
@@ -145,10 +160,24 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-600 text-lg">{t.footer.copyright}</p>
+          <div
+            className={`flex flex-col md:flex-row ${
+              isRTL ? "md:flex-row-reverse" : ""
+            } justify-between items-center`}
+          >
+            <p
+              className={`text-gray-600 text-lg ${
+                isRTL ? "text-right" : "text-left"
+              }`}
+            >
+              {t.footer.copyright}
+            </p>
             <div className="mt-4 md:mt-0">
-              <p className="text-yellow-500 font-semibold text-lg">
+              <p
+                className={`text-yellow-500 font-semibold text-lg ${
+                  isRTL ? "text-right" : "text-left"
+                }`}
+              >
                 {t.footer.slogan}
               </p>
             </div>
