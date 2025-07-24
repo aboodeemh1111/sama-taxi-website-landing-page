@@ -5,7 +5,7 @@ import HowItWorks from "@/components/HowItWorks";
 
 import Footer from "@/components/Footer";
 import Download from "@/components/Download";
-// import JoinDriverTeam from "@/components/JoinDriverTeam";
+import JoinDriverTeam from "@/components/JoinDriverTeam";
 import AboutTheApp from "@/components/AboutTheApp";
 import FemaleDrivers from "@/components/FemaleDrivers";
 
@@ -31,9 +31,9 @@ export default function Home() {
         <section id="download">
           <Download />
         </section>
-        {/* <section id="join-driver-team">
+        <section id="join-driver-team">
           <JoinDriverTeam />
-        </section> */}
+        </section>
       </main>
       <Footer />
     </div>

@@ -50,22 +50,44 @@ export const en = {
 
   // How It Works Section
   howItWorks: {
-    title: "Your Journey in 3 Simple Steps",
-    step1: {
-      title: "Download Sama Taxi App",
-      description:
-        "Get our free app from the App Store or Google Play. Quick registration, quick access.",
-    },
-    step2: {
-      title: "Book Your Ride Instantly",
-      description:
-        "Enter your pickup point and destination. Choose your preferred vehicle and confirm your trip.",
-    },
-    step3: {
-      title: "Enjoy Your Ride",
-      description:
-        "Track your driver in real-time, relax comfortably, and arrive safely at your destination.",
-    },
+    title: "How Does Sama Taxi App Work?",
+    subtitle: "Your journey in 5 simple steps - from request to arrival",
+    clickToEnlarge: "Click on any card to view details in larger size",
+    steps: [
+      {
+        title: "Choose Service Type",
+        description: "Select the type of trip you want from available options",
+        detailedDescription:
+          "From the main screen, you can choose the appropriate service type for you. Sama app provides multiple options to meet your different travel needs.",
+      },
+      {
+        title: "Set Your Location and Destination",
+        description: "Choose pickup point and destination on the map easily",
+        detailedDescription:
+          "Use the interactive map to accurately set your current location and destination. You can search for addresses or click directly on the map to choose the location.",
+      },
+      {
+        title: "Track Your Trip",
+        description: "Monitor driver location and trip progress in real-time",
+        detailedDescription:
+          "Watch the driver's location directly on the map, and follow your trip progress step by step. You'll get instant updates about expected arrival time.",
+      },
+      {
+        title: "Trip Completion and Payment",
+        description:
+          "Receive your trip receipt and pay with your preferred method",
+        detailedDescription:
+          "After the trip ends, you'll receive a detailed receipt containing all trip details and cost. You can pay with your preferred method.",
+      },
+      {
+        title: "Save Your Favorite Places",
+        description: "Save important addresses for easy access later",
+        detailedDescription:
+          "Add places you visit regularly to your favorites list for quick access in future trips. Save your time and book with one click.",
+      },
+    ],
+    ctaText: "Simple, fast, and safe - try it now!",
+    downloadFree: "Download App for Free",
   },
 
   // Female Drivers Section
@@ -136,6 +158,37 @@ export const en = {
     },
   },
 
+  // Driver Conditions Section
+  driverConditions: {
+    title: "Driver Registration Terms and Conditions",
+    subtitle:
+      "Please read the terms and conditions carefully before registering as a driver on Sama Taxi platform. Compliance with these terms is necessary to ensure service quality and safety for all parties.",
+    backToHome: "Back to Homepage",
+    identityRequirements: {
+      title: "Identity Requirements",
+      items: [
+        "The registrant must be of Saudi nationality",
+        "The identity must be valid",
+        "The driver must have a valid criminal background certificate",
+      ],
+    },
+    vehicleRequirements: {
+      title: "Vehicle Requirements",
+      items: [
+        "The vehicle license must be valid",
+        "The vehicle must be from model 2016 or newer",
+        "Vehicle insurance must be available",
+        "Valid registration card with the same name as the registered driver",
+        "If the vehicle is registered under another person's name, authorization in the registered driver's name is required",
+      ],
+    },
+    importantNotice: {
+      title: "Important Note",
+      content:
+        "All the above conditions must be met for approval of the registration request. In case any of these conditions are not met, the request will be rejected and the applicant will be notified of the reasons.",
+    },
+  },
+
   // Final CTA Section
   finalCTA: {
     title: "Ready for Your Next Trip? Download Sama Taxi App Now!",
@@ -153,6 +206,7 @@ export const en = {
     legal: "Legal",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
+    driverConditionsLink: "Driver Registration Conditions",
     careers: "Careers",
     copyright: "© 2025 Sama Taxi. All rights reserved.",
     slogan: "Sama Taxi: Your destination, safely!",

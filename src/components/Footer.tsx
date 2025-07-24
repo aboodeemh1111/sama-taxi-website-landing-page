@@ -128,7 +128,7 @@ const Footer = () => {
                   href="/driver-conditions"
                   className="text-gray-600 hover:text-yellow-500 transition-colors duration-300 text-lg"
                 >
-                  شروط التسجيل كسائق
+                  {t.footer.driverConditionsLink}
                 </Link>
               </li>
               <li>

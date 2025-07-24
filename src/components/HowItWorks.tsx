@@ -11,46 +11,41 @@ const HowItWorks = () => {
 
   const steps = [
     {
-      title: "اختر نوع الخدمة",
-      description: "حدد نوع الرحلة التي تريدها من الخيارات المتاحة",
-      detailedDescription:
-        "من الشاشة الرئيسية، يمكنك اختيار نوع الخدمة المناسبة لك. تطبيق سما يوفر خيارات متعددة لتلبية احتياجاتك المختلفة من الرحلات.",
+      title: t.howItWorks.steps[0].title,
+      description: t.howItWorks.steps[0].description,
+      detailedDescription: t.howItWorks.steps[0].detailedDescription,
       img: "/images~/custommer/اختيار_نوع_الخدمه.png",
       color: "from-blue-50 to-blue-100",
       accent: "text-blue-600",
     },
     {
-      title: "حدد موقعك ووجهتك",
-      description: "اختر نقطة الانطلاق والوجهة على الخريطة بسهولة",
-      detailedDescription:
-        "استخدم الخريطة التفاعلية لتحديد موقعك الحالي ووجهتك بدقة. يمكنك البحث عن العناوين أو النقر مباشرة على الخريطة لاختيار المكان.",
+      title: t.howItWorks.steps[1].title,
+      description: t.howItWorks.steps[1].description,
+      detailedDescription: t.howItWorks.steps[1].detailedDescription,
       img: "/images~/custommer/التحديد_على_الخريطهط.png",
       color: "from-green-50 to-green-100",
       accent: "text-green-600",
     },
     {
-      title: "تتبع رحلتك",
-      description: "راقب موقع السائق وتقدم رحلتك في الوقت الفعلي",
-      detailedDescription:
-        "شاهد موقع السائق مباشرة على الخريطة، وتابع تقدم رحلتك خطوة بخطوة. ستحصل على تحديثات فورية حول وقت الوصول المتوقع.",
+      title: t.howItWorks.steps[2].title,
+      description: t.howItWorks.steps[2].description,
+      detailedDescription: t.howItWorks.steps[2].detailedDescription,
       img: "/images~/custommer/الرحله_قيد_التقدم.png",
       color: "from-yellow-50 to-yellow-100",
       accent: "text-yellow-600",
     },
     {
-      title: "اكتمال الرحلة والدفع",
-      description: "استلم إيصال رحلتك وادفع بالطريقة المناسبة لك",
-      detailedDescription:
-        "بعد انتهاء الرحلة، ستحصل على إيصال مفصل يحتوي على كافة تفاصيل الرحلة والتكلفة. يمكنك الدفع بالطريقة التي تفضلها.",
+      title: t.howItWorks.steps[3].title,
+      description: t.howItWorks.steps[3].description,
+      detailedDescription: t.howItWorks.steps[3].detailedDescription,
       img: "/images~/custommer/الايصال.png",
       color: "from-purple-50 to-purple-100",
       accent: "text-purple-600",
     },
     {
-      title: "احفظ أماكنك المفضلة",
-      description: "احفظ العناوين المهمة لسهولة الوصول إليها لاحقاً",
-      detailedDescription:
-        "أضف الأماكن التي تزورها بانتظام إلى قائمة المفضلة لسهولة الوصول السريع إليها في المرات القادمة. وفر وقتك واحجز بنقرة واحدة.",
+      title: t.howItWorks.steps[4].title,
+      description: t.howItWorks.steps[4].description,
+      detailedDescription: t.howItWorks.steps[4].detailedDescription,
       img: "/images~/custommer/حفظ_الاماكن_المفضله_لديك.png",
       color: "from-orange-50 to-orange-100",
       accent: "text-orange-600",
@@ -116,13 +111,13 @@ const HowItWorks = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              كيف يعمل تطبيق سما تاكسي؟
+              {t.howItWorks.title}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              رحلتك في 5 خطوات بسيطة - من الطلب إلى الوصول
+              {t.howItWorks.subtitle}
             </p>
             <p className="text-sm text-gray-500 mt-2">
-              انقر على أي بطاقة لمشاهدة التفاصيل بحجم أكبر
+              {t.howItWorks.clickToEnlarge}
             </p>
           </div>
 
@@ -189,13 +184,17 @@ const HowItWorks = () => {
 
                   {/* Click hint */}
                   <div className="mt-3 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    👆 انقر للتكبير
+                    👆 {t.common.clickToEnlarge}
                   </div>
                 </div>
 
                 {/* Connecting Arrow */}
                 {idx < steps.length - 1 && (
-                  <div className="absolute top-1/2 -left-4 transform -translate-y-1/2 z-10">
+                  <div
+                    className={`absolute top-1/2 ${
+                      isRTL ? "-right-4" : "-left-4"
+                    } transform -translate-y-1/2 z-10`}
+                  >
                     <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg">
                       <svg
                         className="w-4 h-4 text-white"
@@ -207,7 +206,7 @@ const HowItWorks = () => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M15 19l-7-7 7-7"
+                          d={isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"}
                         />
                       </svg>
                     </div>
@@ -222,7 +221,9 @@ const HowItWorks = () => {
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="flex items-start space-x-6 space-x-reverse"
+                className={`flex items-start ${
+                  isRTL ? "space-x-6 space-x-reverse" : "space-x-6"
+                }`}
               >
                 {/* Step Number */}
                 <div className="flex-shrink-0 w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
@@ -252,7 +253,7 @@ const HowItWorks = () => {
                           {step.description}
                         </p>
                         <p className="text-xs text-gray-400">
-                          👆 انقر للتكبير والمشاهدة التفصيلية
+                          👆 {t.common.clickToEnlarge}
                         </p>
                       </div>
 
@@ -284,7 +285,7 @@ const HowItWorks = () => {
           <div className="text-center mt-16">
             <div className="inline-flex items-center bg-yellow-50 border border-yellow-200 rounded-full px-8 py-4 mb-6">
               <svg
-                className="w-6 h-6 text-yellow-500 ml-3"
+                className={`w-6 h-6 text-yellow-500 ${isRTL ? "ml-3" : "mr-3"}`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -295,7 +296,7 @@ const HowItWorks = () => {
                 />
               </svg>
               <span className="text-yellow-700 font-semibold text-lg">
-                بسيط وسريع وآمن - جربه الآن!
+                {t.howItWorks.ctaText}
               </span>
             </div>
 
@@ -304,7 +305,7 @@ const HowItWorks = () => {
                 href="#download"
                 className="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                حمل التطبيق مجاناً
+                {t.howItWorks.downloadFree}
               </a>
             </div>
           </div>
@@ -325,7 +326,9 @@ const HowItWorks = () => {
             {/* Close Button */}
             <button
               onClick={handleModalClose}
-              className="absolute top-4 left-4 z-20 w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+              className={`absolute top-4 ${
+                isRTL ? "right-4" : "left-4"
+              } z-20 w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110`}
             >
               <svg
                 className="w-5 h-5"
@@ -345,7 +348,9 @@ const HowItWorks = () => {
             {/* Navigation Buttons */}
             <button
               onClick={handlePreviousCard}
-              className="absolute top-1/2 left-4 transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+              className={`absolute top-1/2 ${
+                isRTL ? "right-4" : "left-4"
+              } transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110`}
             >
               <svg
                 className="w-6 h-6"
@@ -357,14 +362,16 @@ const HowItWorks = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
+                  d={isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"}
                 />
               </svg>
             </button>
 
             <button
               onClick={handleNextCard}
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+              className={`absolute top-1/2 ${
+                isRTL ? "left-4" : "right-4"
+              } transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110`}
             >
               <svg
                 className="w-6 h-6"
@@ -376,13 +383,17 @@ const HowItWorks = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M9 5l7 7-7 7"
+                  d={isRTL ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
                 />
               </svg>
             </button>
 
             {/* Modal Body */}
-            <div className="flex flex-col md:flex-row h-full max-h-[90vh]">
+            <div
+              className={`flex flex-col ${
+                isRTL ? "md:flex-row-reverse" : "md:flex-row"
+              } h-full max-h-[90vh]`}
+            >
               {/* Image Section */}
               <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-8">
                 <div className="relative max-w-full max-h-full">
@@ -398,12 +409,20 @@ const HowItWorks = () => {
               </div>
 
               {/* Content Section */}
-              <div className="md:w-1/2 p-8 overflow-y-auto">
+              <div
+                className={`md:w-1/2 p-8 overflow-y-auto ${
+                  isRTL ? "text-right" : "text-left"
+                }`}
+              >
                 {/* Step Number Badge */}
                 <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  <span className="ml-2">خطوة</span>
+                  <span className={isRTL ? "ml-2" : "mr-2"}>
+                    {t.joinDriverTeam.modal.featureLabel}
+                  </span>
                   <span>{activeCard + 1}</span>
-                  <span className="mr-2">من {steps.length}</span>
+                  <span className={isRTL ? "mr-2" : "ml-2"}>
+                    {t.common.next} {steps.length}
+                  </span>
                 </div>
 
                 {/* Title */}
@@ -421,7 +440,7 @@ const HowItWorks = () => {
                 {/* Detailed Description */}
                 <div className="bg-gray-50 rounded-2xl p-6 mb-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    تفاصيل أكثر:
+                    {t.joinDriverTeam.modal.moreDetails}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
                     {steps[activeCard].detailedDescription}
@@ -429,7 +448,11 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Navigation Dots */}
-                <div className="flex justify-center space-x-2 space-x-reverse mb-6">
+                <div
+                  className={`flex justify-center ${
+                    isRTL ? "space-x-2 space-x-reverse" : "space-x-2"
+                  } mb-6`}
+                >
                   {steps.map((_, idx) => (
                     <button
                       key={idx}
@@ -450,20 +473,20 @@ const HowItWorks = () => {
                     className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105"
                   >
                     {activeCard < steps.length - 1
-                      ? "الخطوة التالية"
-                      : "العودة للبداية"}
+                      ? t.joinDriverTeam.modal.nextFeature
+                      : t.joinDriverTeam.modal.backToStart}
                   </button>
                   <button
                     onClick={handleModalClose}
                     className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:border-gray-400 transition-all duration-200"
                   >
-                    إغلاق
+                    {t.joinDriverTeam.modal.close}
                   </button>
                 </div>
 
                 {/* Keyboard Hint */}
                 <p className="text-center text-sm text-gray-400 mt-4">
-                  استخدم الأسهم للتنقل أو اضغط ESC للإغلاق
+                  {t.joinDriverTeam.modal.useArrowsHint}
                 </p>
               </div>
             </div>
