@@ -2,13 +2,29 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import NextImage from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const iphone16 = "/images~/IPhone16.png";
 
 const Hero = () => {
   const { t, isRTL } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [showFallback, setShowFallback] = useState(false);
+
+  // Smooth scroll function similar to Navbar
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.offsetTop - offset;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -16,47 +32,92 @@ const Hero = () => {
 
     const handleEnded = () => {
       video.currentTime = 0;
-      video.play();
+      video.play().catch(() => {
+        setShowFallback(true);
+      });
     };
 
     const handleCanPlay = () => {
+      setVideoLoaded(true);
       video.play().catch((error) => {
         console.log("Video autoplay failed:", error);
+        setShowFallback(true);
       });
+    };
+
+    const handleError = () => {
+      setShowFallback(true);
+    };
+
+    const handleLoadedData = () => {
+      setVideoLoaded(true);
     };
 
     video.addEventListener("ended", handleEnded);
     video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("error", handleError);
+    video.addEventListener("loadeddata", handleLoadedData);
+
+    // Fallback timeout
+    const fallbackTimer = setTimeout(() => {
+      if (!videoLoaded) {
+        setShowFallback(true);
+      }
+    }, 5000);
 
     return () => {
       video.removeEventListener("ended", handleEnded);
       video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleError);
+      video.removeEventListener("loadeddata", handleLoadedData);
+      clearTimeout(fallbackTimer);
     };
-  }, []);
+  }, [videoLoaded]);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        disablePictureInPicture
-        controlsList="nodownload"
-        suppressHydrationWarning
-      >
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        {t.hero.videoError}
-      </video>
+    <section
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+      aria-label={t.hero.headline}
+    >
+      {/* Video Background with fallback */}
+      {!showFallback ? (
+        <video
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
+            videoLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          disablePictureInPicture
+          controlsList="nodownload"
+          suppressHydrationWarning
+          aria-hidden="true"
+          poster="/images~/hero-poster.jpg"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          {t.hero.videoError}
+        </video>
+      ) : (
+        // Fallback gradient background
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 z-0"
+          aria-hidden="true"
+        />
+      )}
 
       {/* Glass Overlay */}
-      <div className="absolute inset-0 bg-white/20 backdrop-blur-sm z-10 border-white/20"></div>
+      <div
+        className="absolute inset-0 bg-white/20 backdrop-blur-sm z-10 border-white/20"
+        aria-hidden="true"
+      ></div>
 
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-[2px] z-10"></div>
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-[2px] z-10"
+        aria-hidden="true"
+      ></div>
 
       {/* Hero Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-between w-full">
@@ -85,46 +146,64 @@ const Hero = () => {
                 : "justify-center md:justify-start"
             }`}
           >
-            <a
-              href="#download"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            <button
+              onClick={() => scrollToSection("download")}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-50"
+              aria-label={`${t.hero.downloadApp} - ${t.hero.subheadline}`}
             >
               {t.hero.downloadApp}
-            </a>
-            <a
-              href="#join-driver"
-              className="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+            </button>
+            <button
+              onClick={() => scrollToSection("join-driver-team")}
+              className="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
+              aria-label={`${t.hero.joinDriver} - انضم إلى فريق السائقين`}
             >
               {t.hero.joinDriver}
-            </a>
+            </button>
           </div>
         </div>
 
         {/* Phone Mockup */}
         <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
-          <div className="relative">
+          <div
+            className="relative"
+            role="img"
+            aria-label="تطبيق سما تاكسي على الهاتف المحمول"
+          >
             <NextImage
               src={iphone16}
-              alt="iphone16"
+              alt={t.hero.phoneAlt}
               className="w-[280px] md:w-[420px] lg:w-[480px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
               width={320}
               height={640}
+              priority
+              sizes="(max-width: 768px) 280px, (max-width: 1024px) 420px, 480px"
+              quality={90}
             />
-            <div className="absolute -inset-4 bg-yellow-500 bg-opacity-20 rounded-3xl blur-xl -z-10"></div>
+            <div
+              className="absolute -inset-4 bg-yellow-500 bg-opacity-20 rounded-3xl blur-xl -z-10"
+              aria-hidden="true"
+            ></div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="animate-bounce">
+        <button
+          onClick={() => scrollToSection("about")}
+          className="animate-bounce p-2 rounded-full hover:bg-white/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+          aria-label="انتقل إلى القسم التالي"
+        >
           <svg
             width="24"
             height="24"
             fill="none"
             stroke="currentColor"
-            className="mx-auto"
+            className="mx-auto text-white"
             viewBox="0 0 24 24"
+            aria-hidden="true"
+            role="img"
           >
             <path
               strokeLinecap="round"
@@ -133,7 +212,7 @@ const Hero = () => {
               d="M19 14l-7 7m0 0l-7-7m7 7V3"
             />
           </svg>
-        </div>
+        </button>
       </div>
     </section>
   );

@@ -1,0 +1,106 @@
+{
+  "name": "سما تاكسي - Sama Taxi",
+  "short_name": "سما تاكسي",
+  "description": "رحلتك الموثوقة، بلمسة واحدة فقط. احجز رحلات سريعة وآمنة ومريحة في جميع أنحاء المملكة العربية السعودية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#fbbf24",
+  "orientation": "portrait-primary",
+  "categories": ["transportation", "travel", "utilities"],
+  "lang": "ar",
+  "dir": "rtl",
+  "scope": "/",
+  "id": "sama-taxi-app",
+  "icons": [
+    {
+      "src": "/images~/Sama Taxi-05.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images~/IPhone16.png",
+      "sizes": "320x640",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "تطبيق سما تاكسي"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.multibrains.taxi.passenger.samtaxisaudi",
+      "id": "com.multibrains.taxi.passenger.samtaxisaudi"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/sa/app/sama-taxi-delivery/id1605081866"
+    }
+  ],
+  "prefer_related_applications": true,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
+  "shortcuts": [
+    {
+      "name": "تحميل التطبيق",
+      "short_name": "تحميل",
+      "description": "تحميل تطبيق سما تاكسي",
+      "url": "/#download",
+      "icons": [
+        {
+          "src": "/images~/get_on_app_store.svg",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "انضم كسائق",
+      "short_name": "سائق",
+      "description": "انضم إلى فريق سائقي سما تاكسي",
+      "url": "/#join-driver-team",
+      "icons": [
+        {
+          "src": "/images~/Sama Captains.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

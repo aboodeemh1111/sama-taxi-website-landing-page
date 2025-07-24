@@ -1,4 +1,33 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sama-taxi.vercel.app/sitemap.xml 
+# Allow all crawlers to access CSS, JS, and image files
+Allow: /images/
+Allow: /_next/static/
+Allow: /images~/
+
+# Block crawling of private/admin areas if any exist in the future
+Disallow: /api/private/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://sama-taxi.vercel.app/sitemap.xml
+
+# Crawl-delay for bots (optional, helps prevent overload)
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: / 

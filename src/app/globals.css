@@ -2,16 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Prevent font flash */
+  font-display: swap;
 }
 
 /* Enhanced smooth scrolling */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -44,247 +63,212 @@ body {
   color: #000000;
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
 }
 
 .dark body {
   background: #111827;
-  color: #f9fafb;
+  color: #ffffff;
 }
 
-/* RTL Support */
-[dir="rtl"] {
-  direction: rtl;
+/* Improve focus visibility for accessibility */
+*:focus {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
 }
 
-[dir="ltr"] {
-  direction: ltr;
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #fbbf24;
+  color: black;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.3s;
+  z-index: 9999;
 }
 
-/* Fix for RTL spacing utilities */
-[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 1;
-  margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+.skip-link:focus {
+  top: 0;
 }
 
-/* Custom margin utilities for RTL */
-[dir="rtl"] .mr-2 {
-  margin-right: 0.5rem;
-}
-
-[dir="ltr"] .ml-2 {
-  margin-left: 0.5rem;
-}
-
-/* Text alignment */
-[dir="rtl"] .text-right {
-  text-align: right;
-}
-
-[dir="ltr"] .text-left {
-  text-align: left;
-}
-
-/* Enhanced smooth transitions for all elements */
-* {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Specific transitions for interactive elements */
-button,
-a,
-input,
-textarea,
-select {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Scroll animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
   }
 }
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Better text selection */
+::selection {
+  background-color: #fbbf24;
+  color: #000000;
 }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+::-moz-selection {
+  background-color: #fbbf24;
+  color: #000000;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* Improved button styles for better accessibility */
+button {
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
-/* Animation classes */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
-.animate-fade-in-left {
-  animation: fadeInLeft 0.6s ease-out forwards;
-}
-
-.animate-fade-in-right {
-  animation: fadeInRight 0.6s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-/* Intersection Observer animations */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.scroll-animate.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger animations for child elements */
-.stagger-animate > * {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.stagger-animate.animate > *:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.stagger-animate.animate > *:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.stagger-animate.animate > *:nth-child(3) {
-  transition-delay: 0.3s;
-}
-.stagger-animate.animate > *:nth-child(4) {
-  transition-delay: 0.4s;
-}
-.stagger-animate.animate > *:nth-child(5) {
-  transition-delay: 0.5s;
-}
-
-.stagger-animate.animate > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Custom scrollbar for dark mode */
+/* Custom scrollbar for better UX */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #374151;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #6b7280;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: #a8a8a8;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
-}
-
-/* Selection colors */
-::selection {
-  background-color: #fbbf24;
-  color: #000000;
-}
-
-.dark ::selection {
-  background-color: #f59e0b;
-  color: #ffffff;
-}
-
-/* Card and component transitions */
-.card,
-.feature-card,
-.testimonial-card {
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Smooth gradient transitions */
-.gradient-bg {
-  transition: background-image 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Active section highlighting */
-.nav-link {
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-link.active {
-  color: #f59e0b;
-}
-
-.nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #f59e0b;
-  border-radius: 1px;
-}
-
-/* Parallax effect */
-.parallax {
+/* Performance optimization for transforms */
+.transform-gpu {
   transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Animation optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Container queries support */
+@container (min-width: 768px) {
+  .container-responsive {
+    padding: 2rem;
+  }
+}
+
+/* RTL support improvements */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* Video optimization */
+video {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Lazy loading placeholder */
+.lazy-image {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Content shift prevention */
+.prevent-layout-shift {
+  contain: layout style paint;
+}
+
+/* Grid improvements for performance */
+.grid-performance {
+  contain: layout;
+}
+
+/* Text optimization */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Custom properties for consistent theming */
+:root {
+  --primary-color: #fbbf24;
+  --secondary-color: #f59e0b;
+  --text-color: #1f2937;
+  --bg-color: #ffffff;
+  --border-radius: 0.75rem;
+  --shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Component-specific optimizations */
+.hero-section {
+  contain: layout style paint;
   will-change: transform;
+}
+
+.navbar {
+  contain: layout style;
+}
+
+.card {
+  contain: layout style paint;
 }
