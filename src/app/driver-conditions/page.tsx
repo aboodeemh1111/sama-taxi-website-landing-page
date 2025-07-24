@@ -32,54 +32,76 @@ export default function DriverConditionsPage() {
       </nav>
 
       {/* Main Content */}
-      <main   className="max-w-4xl mx-auto px-6 py-12">
-
+      <main className="max-w-4xl mx-auto px-6 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            شروط وأحكام التسجيل كسائق في سما تاكسي
+        <div className="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              شروط وأحكام التسجيل كسائق في سما تاكسي
             </h1>
-        <h2>
-          شروط التسجيل
-        </h2>
-        <h2 className="text-lg text-gray-700 mb-4"> الهويه</h2>
-        <h3 className="text-lg text-gray-700 mb-4 ">
-          ان يكون المسجل سعودي الجنسيه
-        </h3>
-        <h2 className="text-lg text-gray-700 mb-4">
-          ان تكو ن الهويه ساريه المفعوله
-        </h2>
-        <h3 className="text-lg text-gray-700 mb-4">
+            <ul className="list-disc list-inside">
+              <li className="text-xl text-gray-700 mb-4 mt-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                شروط التسجيل
+              </li>
+              <li className="text-xl text-gray-700 mb-4 mt-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                {" "}
+                الهويه
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                ان يكون المسجل سعودي الجنسيه
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                ان تكو ن الهويه ساريه المفعوله
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                ان يكون السائق لديه شهاده خلو سوابق ساريه المفعول
+              </li>
 
-          ان يكون السائق لديه شهاده خلو سوابق ساريه المفعول
-          </h3>
-          
-        
-        <h2 className="text-lg text-gray-700 mb-4">
-          ا
-        
+              <li className="text-xl text-gray-700 mb-4 mt-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                المركبه
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                ان تكون رخصه المركبه ساريه المفعوله
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                ان تكون المركبه من موديل 2016 او احدث
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                وجود تأمين علي المركبه
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                وجود استماره ساريه بنفس اسم السائق المسجل{" "}
+              </li>
+              <li className="text-xl text-gray-700 mb-4 hover:text-yellow-500 transition-colors cursor-pointer">
+                {" "}
+                في حاله ان تكون الركبه مسجله باسم سخص اخر يجب وجود تفويض باسم
+                السائق المسجل
+              </li>
+            </ul>
 
-        {/* Back to Home */}
-        <div className="text-center mt-12">
-          <Link
-            href="/"
-            className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium"
-          >
-            <svg
-              className="w-5 h-5 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
-            العودة للصفحة الرئيسية
-          </Link>
+            {/* Back to Home */}
+            <div className="text-center mt-12">
+              <Link
+                href="/"
+                className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium"
+              >
+                <svg
+                  className="w-5 h-5 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+                العودة للصفحة الرئيسية
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
     </div>
