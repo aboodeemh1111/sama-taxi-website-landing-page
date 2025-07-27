@@ -121,9 +121,9 @@ const HowItWorks = () => {
             </p>
           </div>
 
-          {/* Steps Grid - Desktop */}
-          <div className="hidden lg:grid lg:grid-cols-5 gap-8 mb-16">
-            {steps.map((step, idx) => (
+          {/* Steps Grid - Desktop - First Row (3 columns) */}
+          <div className="hidden lg:grid lg:grid-cols-3 gap-8 mb-8">
+            {steps.slice(0, 3).map((step, idx) => (
               <div key={idx} className="relative">
                 {/* Step Card */}
                 <div
@@ -187,31 +187,76 @@ const HowItWorks = () => {
                     👆 {t.common.clickToEnlarge}
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
 
-                {/* Connecting Arrow */}
-                {idx < steps.length - 1 && (
+          {/* Steps Grid - Desktop - Second Row (2 columns) */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+            {steps.slice(3).map((step, idx) => (
+              <div key={idx + 3} className="relative">
+                {/* Step Card */}
+                <div
+                  className={`
+                    group bg-white rounded-2xl p-6 shadow-lg cursor-pointer
+                    transition-all duration-300 ease-out transform-gpu
+                    ${getCardScale(idx + 3)}
+                    hover:shadow-2xl hover:-translate-y-3
+                  `}
+                  onClick={() => handleCardClick(idx + 3)}
+                  onMouseEnter={() => setHoveredCard(idx + 3)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  {/* Step Number */}
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                    {idx + 4}
+                  </div>
+
+                  {/* Phone Screenshot */}
                   <div
-                    className={`absolute top-1/2 ${
-                      isRTL ? "-right-4" : "-left-4"
-                    } transform -translate-y-1/2 z-10`}
+                    className={`relative mb-4 overflow-hidden rounded-xl bg-gradient-to-br ${step.color} group-hover:shadow-lg transition-all duration-300`}
                   >
-                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d={isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"}
-                        />
-                      </svg>
+                    <NextImage
+                      src={step.img}
+                      alt={step.title}
+                      width={250}
+                      height={500}
+                      className="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+
+                    {/* Click overlay hint */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 rounded-full p-3">
+                        <svg
+                          className="w-6 h-6 text-gray-700"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                )}
+
+                  {/* Step Content */}
+                  <h3 className={`text-lg font-bold mb-2 ${step.accent}`}>
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+
+                  {/* Click hint */}
+                  <div className="mt-3 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    👆 {t.common.clickToEnlarge}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -314,15 +359,15 @@ const HowItWorks = () => {
 
       {/* Modal Popup Overlay */}
       {activeCard !== null && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm transition-opacity duration-300"
             onClick={handleModalClose}
           />
 
-          {/* Modal Content */}
-          <div className="relative z-10 max-w-4xl max-h-[90vh] mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+          {/* Modal Content - STANDARDIZED DIMENSIONS */}
+          <div className="relative z-10 w-full max-w-5xl h-[85vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
             {/* Close Button */}
             <button
               onClick={handleModalClose}
@@ -388,29 +433,29 @@ const HowItWorks = () => {
               </svg>
             </button>
 
-            {/* Modal Body */}
+            {/* Modal Body - FIXED HEIGHT AND LAYOUT */}
             <div
-              className={`flex flex-col ${
-                isRTL ? "md:flex-row-reverse" : "md:flex-row"
-              } h-full max-h-[90vh]`}
+              className={`flex ${
+                isRTL ? "flex-row-reverse" : "flex-row"
+              } h-full`}
             >
-              {/* Image Section */}
-              <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-8">
-                <div className="relative max-w-full max-h-full">
+              {/* Image Section - STANDARDIZED */}
+              <div className="w-1/2 h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-8">
+                <div className="relative w-full h-full flex items-center justify-center">
                   <NextImage
                     src={steps[activeCard].img}
                     alt={steps[activeCard].title}
-                    width={400}
-                    height={800}
-                    className="max-w-full max-h-[60vh] md:max-h-[80vh] w-auto h-auto object-contain rounded-2xl shadow-2xl"
+                    width={350}
+                    height={700}
+                    className="max-w-[350px] max-h-[70vh] w-auto h-auto object-contain rounded-2xl shadow-2xl"
                     priority
                   />
                 </div>
               </div>
 
-              {/* Content Section */}
+              {/* Content Section - STANDARDIZED */}
               <div
-                className={`md:w-1/2 p-8 overflow-y-auto ${
+                className={`w-1/2 h-full p-8 overflow-y-auto ${
                   isRTL ? "text-right" : "text-left"
                 }`}
               >

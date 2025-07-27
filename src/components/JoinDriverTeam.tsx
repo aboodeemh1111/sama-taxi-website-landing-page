@@ -441,19 +441,21 @@ const JoinDriverTeam = () => {
 
       {/* Modal Popup Overlay */}
       {activeCard !== null && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm transition-opacity duration-300"
             onClick={handleModalClose}
           />
 
-          {/* Modal Content */}
-          <div className="relative z-10 max-w-4xl max-h-[90vh] mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+          {/* Modal Content - STANDARDIZED DIMENSIONS */}
+          <div className="relative z-10 w-full max-w-5xl h-[85vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
             {/* Close Button */}
             <button
               onClick={handleModalClose}
-              className="absolute top-4 left-4 z-20 w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+              className={`absolute top-4 ${
+                isRTL ? "right-4" : "left-4"
+              } z-20 w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110`}
             >
               <svg
                 className="w-5 h-5"
@@ -473,7 +475,9 @@ const JoinDriverTeam = () => {
             {/* Navigation Buttons */}
             <button
               onClick={handlePreviousCard}
-              className="absolute top-1/2 left-4 transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+              className={`absolute top-1/2 ${
+                isRTL ? "right-4" : "left-4"
+              } transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110`}
             >
               <svg
                 className="w-6 h-6"
@@ -485,14 +489,16 @@ const JoinDriverTeam = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
+                  d={isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"}
                 />
               </svg>
             </button>
 
             <button
               onClick={handleNextCard}
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+              className={`absolute top-1/2 ${
+                isRTL ? "left-4" : "right-4"
+              } transform -translate-y-1/2 z-20 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110`}
             >
               <svg
                 className="w-6 h-6"
@@ -504,36 +510,46 @@ const JoinDriverTeam = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M9 5l7 7-7 7"
+                  d={isRTL ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
                 />
               </svg>
             </button>
 
-            {/* Modal Body */}
-            <div className="flex flex-col md:flex-row h-full max-h-[90vh]">
-              {/* Image Section */}
-              <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-8">
-                <div className="relative max-w-full max-h-full">
+            {/* Modal Body - FIXED HEIGHT AND LAYOUT */}
+            <div
+              className={`flex ${
+                isRTL ? "flex-row-reverse" : "flex-row"
+              } h-full`}
+            >
+              {/* Image Section - STANDARDIZED */}
+              <div className="w-1/2 h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-8">
+                <div className="relative w-full h-full flex items-center justify-center">
                   <NextImage
                     src={driverFeatures[activeCard].img}
                     alt={driverFeatures[activeCard].title}
-                    width={400}
-                    height={800}
-                    className="max-w-full max-h-[60vh] md:max-h-[80vh] w-auto h-auto object-contain rounded-2xl shadow-2xl"
+                    width={350}
+                    height={700}
+                    className="max-w-[350px] max-h-[70vh] w-auto h-auto object-contain rounded-2xl shadow-2xl"
                     priority
                   />
                 </div>
               </div>
 
-              {/* Content Section */}
-              <div className="md:w-1/2 p-8 overflow-y-auto">
+              {/* Content Section - STANDARDIZED */}
+              <div
+                className={`w-1/2 h-full p-8 overflow-y-auto ${
+                  isRTL ? "text-right" : "text-left"
+                }`}
+              >
                 {/* Feature Number Badge */}
                 <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
-                  <span className="ml-2">
+                  <span className={isRTL ? "ml-2" : "mr-2"}>
                     {t.joinDriverTeam.modal.featureLabel}
                   </span>
                   <span>{activeCard + 1}</span>
-                  <span className="mr-2">من {driverFeatures.length}</span>
+                  <span className={isRTL ? "mr-2" : "ml-2"}>
+                    من {driverFeatures.length}
+                  </span>
                 </div>
 
                 {/* Title */}
@@ -567,70 +583,80 @@ const JoinDriverTeam = () => {
                     {activeCard === 0 && (
                       <>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> رؤية تفاصيل كاملة عن
-                          الرحلة
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          رؤية تفاصيل كاملة عن الرحلة
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> معرفة الأجرة المتوقعة
-                          مسبقاً
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          معرفة الأجرة المتوقعة مسبقاً
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> اتخاذ قرار مدروس
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          اتخاذ قرار مدروس
                         </li>
                       </>
                     )}
                     {activeCard === 1 && (
                       <>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> مرونة في اختيار نوع
-                          الخدمة
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          مرونة في اختيار نوع الخدمة
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> تحكم كامل في أوقات
-                          العمل
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          تحكم كامل في أوقات العمل
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> تحسين الأرباح
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          تحسين الأرباح
                         </li>
                       </>
                     )}
                     {activeCard === 2 && (
                       <>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> مراجعة سجل الرحلات
-                          السابقة
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          مراجعة سجل الرحلات السابقة
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> تتبع الأرباح اليومية
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          تتبع الأرباح اليومية
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> تحليل الأداء
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          تحليل الأداء
                         </li>
                       </>
                     )}
                     {activeCard === 3 && (
                       <>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> سجل مفصل للمدفوعات
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span> سجل
+                          مفصل للمدفوعات
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> إدارة مالية أفضل
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          إدارة مالية أفضل
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> تتبع الأرباح بدقة
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          تتبع الأرباح بدقة
                         </li>
                       </>
                     )}
                     {activeCard === 4 && (
                       <>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> واجهة بسيطة وسهلة
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          واجهة بسيطة وسهلة
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> سرعة في الاستخدام
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          سرعة في الاستخدام
                         </li>
                         <li className="flex items-center">
-                          <span className="ml-2">✓</span> تجربة مستخدم مثالية
+                          <span className={isRTL ? "ml-2" : "mr-2"}>✓</span>{" "}
+                          تجربة مستخدم مثالية
                         </li>
                       </>
                     )}
@@ -638,7 +664,11 @@ const JoinDriverTeam = () => {
                 </div>
 
                 {/* Navigation Dots */}
-                <div className="flex justify-center space-x-2 space-x-reverse mb-6">
+                <div
+                  className={`flex justify-center ${
+                    isRTL ? "space-x-2 space-x-reverse" : "space-x-2"
+                  } mb-6`}
+                >
                   {driverFeatures.map((_, idx) => (
                     <button
                       key={idx}
