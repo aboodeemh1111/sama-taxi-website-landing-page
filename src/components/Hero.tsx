@@ -79,48 +79,34 @@ const Hero = () => {
       className="relative h-screen flex items-center justify-center overflow-hidden"
       aria-label={t.hero.headline}
     >
-      {/* Video Background with fallback */}
-      {!showFallback ? (
-        <video
-          ref={videoRef}
-          className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          disablePictureInPicture
-          controlsList="nodownload"
-          suppressHydrationWarning
-          aria-hidden="true"
-          poster="/images~/hero-poster.jpg"
-        >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          {t.hero.videoError}
-        </video>
-      ) : (
-        // Fallback gradient background
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 z-0"
-          aria-hidden="true"
-        />
-      )}
+      <NextImage
+        src="/images~/hero-image.png"
+        alt="Hero-Image"
+        className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 opacity-100"
+        width={1920}
+        height={1080}
+        priority
+      />
+
+      {/* Fallback gradient background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 z-0"
+        aria-hidden="true"
+      />
 
       {/* Glass Overlay */}
       <div
-        className="absolute inset-0 bg-white/20 backdrop-blur-sm z-10 border-white/20"
+        className="absolute inset-0 bg-white/20 backdrop-blur-sm z-20 border-white/20"
         aria-hidden="true"
       ></div>
 
       <div
-        className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-[2px] z-10"
+        className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-[2px] z-20"
         aria-hidden="true"
       ></div>
 
       {/* Hero Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-between w-full">
+      <div className="relative z-30 max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-between w-full">
         {/* Text Content */}
         <div
           className={`md:w-1/2 text-center ${
@@ -189,7 +175,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30">
         <button
           onClick={() => scrollToSection("about")}
           className="animate-bounce p-2 rounded-full hover:bg-white/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
